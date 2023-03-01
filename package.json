@@ -1,7 +1,6 @@
 {
   "name": "new-app",
   "version": "1.0.0",
-  "description": "",
   "main": "app.js",
   "scripts": {
     "debug": "ndb server.js",
@@ -53,5 +52,14 @@
     "eslint-plugin-react": "^7.32.2",
     "parcel-bundler": "^1.12.5",
     "prettier": "^2.8.4"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RichardGuilliams/NewApp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/RichardGuilliams/NewApp/issues"
+  },
+  "homepage": "https://github.com/RichardGuilliams/NewApp#readme",
+  "description": ""
 }
