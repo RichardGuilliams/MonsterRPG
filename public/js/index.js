@@ -1,9 +1,10 @@
 /* eslint-disable */
 import '@babel/polyfill';
 import { showAlert } from './alerts';
-import { displayMap } from './mapBox'
-import { login, logout } from './login'
-import { updateSettings } from './updateSettings'
+import { displayMap } from './mapBox';
+import { login, logout } from './login';
+import { signup } from './signup';
+import { updateSettings } from './updateSettings';
 
 // DOM ELEMENTS
 const mapBox = document.getElementById('map');
@@ -31,14 +32,19 @@ if(loginForm){
 }
 
 if(signupForm){
+    console.log('hi')
     signupForm.addEventListener('submit', e => {
         e.preventDefault();
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
-        const passwordConfirm = document.getElementById('passwordConfirm').value;
-        console.log(email, password);
+        const name = document.getElementById('signup-name').value;
+        const email = document.getElementById('signup-email').value;
+        const password = document.getElementById('signup-password').value;
+        const passwordConfirm = document.getElementById('signup-password-confirm').value;
         signup(name, email, password, passwordConfirm);
+
+        name = document.getElementById('signup-name').value = '';
+        email = document.getElementById('signup-email').value = '';
+        password = document.getElementById('signup-password').value = '';
+        passwordConfirm = document.getElementById('signup-password-confirm').value = '';
     });
 }
 

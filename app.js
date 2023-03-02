@@ -88,7 +88,10 @@ app.use(xss());
 //fill whitelist array with strings representing the parameter names
 app.use(hpp({
     whiteList: [
-
+        'name',
+        'email',
+        'password',
+        'passwordConfirm'
     ]
 }));
 
