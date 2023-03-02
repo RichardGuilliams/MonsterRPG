@@ -13,16 +13,16 @@ const app = require('./app');
 
 
 // Uncomment when database is ready to be connected
-// const DB = process.env.DATABASE.replace(`<PASSWORD>`, process.env.DATABASE_PASSWORD );
+const DB = process.env.DATABASE.replace(`<PASSWORD>`, process.env.DATABASE_PASSWORD );
 
-// mongoose
-// .connect(DB, {
-//     useNewUrlParser: true,
-//     useCreateIndex: true,
-//     useFindAndModify: false,
-// })
-// .then(() => console.log(`DB connection successful`))
-// .catch(err => console.log('ERROR you fucked up'));
+mongoose
+.connect(DB, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+})
+.then(() => console.log(`DB connection successful`))
+.catch(err => console.log(err));
 
 
 

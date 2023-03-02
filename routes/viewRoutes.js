@@ -11,6 +11,8 @@ viewController.getOverview
 
 router.get('/login', authController.isLoggedIn, viewController.getLoginForm);
 
+router.get('/signUp', authController.isLoggedIn, viewController.getSignupForm);
+
 router.get('/me', authController.protect, viewController.getAccount);
 
 module.exports = router;
