@@ -4,6 +4,7 @@
     --tertiary-color: rgb(105, 255, 170);
     --small-font: 3rem;
     --medium-font: 5rem;
+    --spacing-small: 1rem;
 }
 
 * {
@@ -12,50 +13,120 @@
     font-size: 6px;
 }
 
+header{
+    display: flex;
+    flex-direction: row;
+    background-color: var(--primary-color);
+}
+
+nav{
+    display: flex;
+    align-items: center;
+}
+
 a{
     font-size: var(--small-font);
-    text-decoration: none;;
+    text-decoration: none;
+    padding: var(--spacing-small);
 }
 
 img{
     border-radius: 100%;
-    width: 100px;
-    height: 100px;
+    width: 40px;
+    height: 40px;
     font-size: var(--small-font);
+    padding: var(--spacing-small);
 }
 
 span{
+    margin: auto;
     font-size: var(--small-font);
+    padding: var(--spacing-small);
 }
 
 label{
     font-size: var(--small-font);
+    padding: var(--spacing-small);
 }
 
 button{
     font-size: var(--small-font);
+    padding: var(--spacing-small);
 }
 
 input{
-    font-size: var(--small-font);;
+    font-size: var(--small-font);
 }
 
 h2{
     font-size: var(--medium-font);
+    padding: var(--spacing-small);
+}
+
+li{
+    margin: var(--spacing-small);
+}
+
+form{
+    margin: var(--spacing-small);
+}
+
+.header__logo{
+    margin-top: auto;
+    margin-bottom: auto;   /* height: 60px;
+    width: 60px; */
+}
+
+
+.nav--user{
+    margin-left: auto;
 }
 
 .nav__el{
+    display: flex;
+    padding: 0;
     font-size: var(--small-font);
+    margin: var(--spacing-small);
 }
 
 .nav__user-img{
-    font-size: var(--small-font);;
+    font-size: var(--small-font);
 }
 
 .main{
     font-size: var(--small-font);
+    padding: var(--spacing-small);
+}
+
+.user-view__form-container{
+    margin: 3rem;
+}
+
+.form__group{
+    margin-top: var(--spacing-small);
+    margin-bottom: var(--spacing-small);
+}
+
+.footer{
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer__nav{
+    display: flex;
+    flex-wrap: wrap;
+    flex: 3;
 }
 
 .footer__copyright{
+    margin: var(--spacing-small);
     font-size: var(--small-font);
+    text-align: end;
+    flex: 1;
+}
+
+.footer__logo{
+    flex: 1;
 }
