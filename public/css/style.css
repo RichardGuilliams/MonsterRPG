@@ -13,6 +13,10 @@
     font-size: 6px;
 }
 
+main{
+    min-height: 500px;
+}
+
 header{
     display: flex;
     flex-direction: row;
@@ -98,6 +102,10 @@ form{
     padding: var(--spacing-small);
 }
 
+.main-container{
+    margin: 3rem;
+}
+
 .user-view__form-container{
     margin: 3rem;
 }
@@ -105,6 +113,10 @@ form{
 .form__group{
     margin-top: var(--spacing-small);
     margin-bottom: var(--spacing-small);
+}
+
+.login-form{
+    margin: 3rem;
 }
 
 .footer{
