@@ -8,6 +8,14 @@ const monsterSchema = new mongoose.Schema(
             required: [true, 'A monster must have a name'],
             unique: [true, 'Please do not use duplicate monster names']
         },
+        imgUrl: {
+            type: String,
+            required: [true, 'A monster must have an image']
+        },
+        desc: {
+            type: String,
+            required: [true, 'A monster must have a description']
+        },
         tamerType: {
             type: [String],
             required: [true, 'A monster must have a class that can tame it'],
@@ -40,10 +48,6 @@ const monsterSchema = new mongoose.Schema(
                 values: ['None', 'Avian', 'Beast', 'Elemental', 'Divine', 'Hive', 'Daemon', 'Fae', 'Serpent', 'Necro', 'Plant', 'Ambhian'],
                 message: 'Monster types have to be either None, Avian, Beast, Elemental, Divine, Hive, Daemon, Fae, Serpent, Necro, Plant, Ambhian'
             }
-        },
-        imgUrl: {
-            type: String,
-            required: [true, 'A monster must have an image']
         },
         lvl: {
             type: Number,
@@ -113,6 +117,6 @@ const monsterSchema = new mongoose.Schema(
     }
 )
 
-const monster = mongoose.model('monster', monsterSchema);
+const Monster = mongoose.model('Monster', monsterSchema);
 
-module.exports = monster;
+module.exports = Monster;

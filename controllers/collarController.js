@@ -1,17 +1,17 @@
 const multer = require('multer');
 const sharp = require('sharp');
-const Stronghold = require('./../models/strongholdModel');
+const Collar = require('./../models/collarModel');
 const catchAsync = require('./../utils/catchAsync');
 const AppError = require('./../utils/appError');
 const factory = require('./handlerFactory');
 
 // const multerStorage = multer.diskStorage({
 //   destination: (req, file, cb) => {
-//     cb(null, 'public/img/Strongholds');
+//     cb(null, 'public/img/Collars');
 //   },
 //   filename: (req, file, cb) => {
 //     const ext = file.mimetype.split('/')[1];
-//     cb(null, `Stronghold-${req.Stronghold.id}-${Date.now()}.${ext}`);
+//     cb(null, `Collar-${req.Collar.id}-${Date.now()}.${ext}`);
 //   }
 // });
 const multerStorage = multer.memoryStorage();
@@ -29,24 +29,24 @@ const upload = multer({
   fileFilter: multerFilter
 });
 
-exports.uploadStrongholdPhoto = upload.single('photo');
+exports.uploadCollarPhoto = upload.single('photo');
 
-exports.resizeStrongholdPhoto = catchAsync(async (req, res, next) => {
+exports.resizeCollarPhoto = catchAsync(async (req, res, next) => {
   if (!req.file) return next();
 
-  req.file.filename = `stronghold-${req.stronghold.id}-${Date.now()}.jpeg`;
+  req.file.filename = `collar-${req.collar.id}-${Date.now()}.jpeg`;
   
   await sharp(req.file.buffer)
     .resize(500, 500)
     .toFormat('jpeg')
     .jpeg({ quality: 90 })
-    .toFile(`public/img/strongholds/${req.file.filename}`);
+    .toFile(`public/img/collars/${req.file.filename}`);
 
   next();
 });
 
-exports.getStronghold = factory.getOne(Stronghold);
-exports.getAllStrongholds = factory.getAll(Stronghold);
-exports.createStronghold = factory.createOne(Stronghold);
-exports.updateStronghold = factory.updateOne(Stronghold);
-exports.deleteStronghold = factory.deleteOne(Stronghold);
+exports.getCollar = factory.getOne(Collar);
+exports.getAllCollars = factory.getAll(Collar);
+exports.createCollar = factory.createOne(Collar);
+exports.updateCollar = factory.updateOne(Collar);
+exports.deleteCollar = factory.deleteOne(Collar);

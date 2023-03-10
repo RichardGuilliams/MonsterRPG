@@ -10,10 +10,14 @@ const allianceSchema = new mongoose.Schema(
         imgUrl: {
             type: String,
             required: [true, 'A alliance must have an image']
+        },
+        desc: {
+            type: String,
+            required: [true, 'A alliance must have a description']
         }
     }
 )
 
-const alliance = mongoose.model('alliance', allianceSchema);
+const Alliance = mongoose.model('Alliance', allianceSchema);
 
-module.exports = alliance;
+module.exports = Alliance;

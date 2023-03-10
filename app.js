@@ -21,6 +21,10 @@ const monsterRouter = require('./routes/monsterRoutes');
 const allianceRouter = require('./routes/allianceRoutes');
 const buildingRouter = require('./routes/buildingRoutes');
 const itemRouter = require('./routes/itemRoutes');
+const armorRouter = require('./routes/armorRoutes');
+const weaponRouter = require('./routes/weaponRoutes');
+const collarRouter = require('./routes/collarRoutes');
+const charmRouter = require('./routes/charmRoutes');
 
 //Front End Rendering with Pug
 const viewRouter = require('./routes/viewRoutes');
@@ -125,6 +129,11 @@ app.use('/api/v1/strongholds', strongholdRouter);
 app.use('/api/v1/monsters', monsterRouter);
 app.use('/api/v1/buildings', buildingRouter);
 app.use('/api/v1/alliances', allianceRouter);
+app.use('/api/v1/items', itemRouter);
+app.use('/api/v1/armors', armorRouter);
+app.use('/api/v1/weapons', weaponRouter);
+app.use('/api/v1/collars', collarRouter);
+app.use('/api/v1/charms', charmRouter);
 
 app.all('*', (req, res, next) => {
     next(new AppError(`cant find ${req.originalUrl} on this server`, 404));

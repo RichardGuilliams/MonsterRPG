@@ -14,6 +14,6 @@ const strongholdSchema = new mongoose.Schema(
     }
 )
 
-const stronghold = mongoose.model('stronghold', strongholdSchema);
+const Stronghold = mongoose.model('Stronghold', strongholdSchema);
 
-module.exports = stronghold;
+module.exports = Stronghold;

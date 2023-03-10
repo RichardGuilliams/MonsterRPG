@@ -34,13 +34,13 @@ exports.uploadMonsterPhoto = upload.single('photo');
 exports.resizeMonsterPhoto = catchAsync(async (req, res, next) => {
   if (!req.file) return next();
 
-  req.file.filename = `Monster-${req.monster.id}-${Date.now()}.jpeg`;
+  req.file.filename = `monster-${req.monster.id}-${Date.now()}.jpeg`;
   
   await sharp(req.file.buffer)
     .resize(500, 500)
     .toFormat('jpeg')
     .jpeg({ quality: 90 })
-    .toFile(`public/img/Monsters/${req.file.filename}`);
+    .toFile(`public/img/monsters/${req.file.filename}`);
 
   next();
 });
