@@ -1,0 +1,7 @@
+[
+    {"name": "Mine", "imgUrl": "../public/img/buildings/default.jpeg"},
+    {"name": "Farm", "imgUrl": "../public/img/buildings/default.jpeg"},
+    {"name": "Forge", "imgUrl": "../public/img/buildings/default.jpeg"},
+    {"name": "Alchemists Lab", "imgUrl": "../public/img/buildings/default.jpeg"}
+]
+

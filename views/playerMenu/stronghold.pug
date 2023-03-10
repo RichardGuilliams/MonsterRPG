@@ -1,0 +1,29 @@
+extends ../base
+
+include .././mixins/buildingCard
+
+block content    
+    main.main 
+        .main__container
+            .container
+                h2.stronghold--name My Stronghold
+                img.stronghold--img(src="/img/buildings/stronghold.jpg")
+            ul
+                li= `Capacity: ${2} / ${12}`
+                li= `Income: ${1200}`    
+                li= `Upkeep: ${230}`
+                li= `Buildings: ${5} / ${12}`
+                li= `Energy: ${30} / ${150}`
+        .main__container 
+            h3 Stronghold Leader 
+            img(src="/img/monsters/goblin.jpg")
+            ul 
+                li= `Name: ${`Gobby`}`
+                li= `Level: ${'40'}`
+                li= `Leader Ability: ${'Hoarder'}`
+                li= `Description: ${'Every building that has a goblin assigned as it leader increases the income of all other buildings by 5%'}`
+        .main__container 
+            h3 Buildings
+            each building in buildings
+                +buildingCard(building)
+

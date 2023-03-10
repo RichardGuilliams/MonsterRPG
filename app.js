@@ -13,7 +13,16 @@ const cors = require('cors');
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
 
+
+// Backend Routing with Express
 const userRouter = require('./routes/userRoutes');
+const strongholdRouter = require('./routes/strongholdRoutes');
+const monsterRouter = require('./routes/monsterRoutes');
+const allianceRouter = require('./routes/allianceRoutes');
+const buildingRouter = require('./routes/buildingRoutes');
+const itemRouter = require('./routes/itemRoutes');
+
+//Front End Rendering with Pug
 const viewRouter = require('./routes/viewRoutes');
 
 const app = express();
@@ -112,6 +121,10 @@ app.use((req, res, next) => {
 //Routes 
 app.use('/', viewRouter);
 app.use('/api/v1/users', userRouter);
+app.use('/api/v1/strongholds', strongholdRouter);
+app.use('/api/v1/monsters', monsterRouter);
+app.use('/api/v1/buildings', buildingRouter);
+app.use('/api/v1/alliances', allianceRouter);
 
 app.all('*', (req, res, next) => {
     next(new AppError(`cant find ${req.originalUrl} on this server`, 404));

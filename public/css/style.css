@@ -35,7 +35,6 @@ a{
 }
 
 img{
-    border-radius: 100%;
     width: 40px;
     height: 40px;
     font-size: var(--small-font);
@@ -67,12 +66,43 @@ h2{
     padding: var(--spacing-small);
 }
 
+h3{
+    font-size: 4rem;
+}
+
+p{
+    font-size: var(--small-font);
+}
+
 li{
+    list-style: none;;
+    font-size: 3rem;
     margin: var(--spacing-small);
 }
 
 form{
     margin: var(--spacing-small);
+}
+
+.column{
+    display: flex;
+    flex-direction: column;
+}
+
+.circle{
+    border-radius: 100%;
+}
+
+.alert--error{
+    font-size: 2.5rem;    
+}
+
+.alert--success{
+    font-size: 2.5rem;    
+}
+
+.error__msg{
+    font-size: 2.5rem;
 }
 
 .header__logo{
@@ -99,15 +129,19 @@ form{
 
 .main{
     font-size: var(--small-font);
-    padding: var(--spacing-small);
 }
 
-.main-container{
+.main__container{
     margin: 3rem;
 }
 
 .user-view__form-container{
     margin: 3rem;
+}
+
+.stronghold--img{
+    width: 200px;
+    height: 200px;
 }
 
 .form__group{

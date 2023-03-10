@@ -10,13 +10,15 @@ html
 
         // BODY
         block content
-            h1 This is a placeholder heading
+            h2 This is a placeholder heading
 
         // FOOTER
         include _footer
 
     script(src="https://js.stripe.com/v3/")
+    script(src="/js/test.js")
     script(src=`/js/bundle.js`)
+    include _scripts
         //- script(src=`https://unpkg.com/axios/dist/axios.min.js`)
         //- script(src=`/js/mapbox.js`)  
         //- script(src=`/js/login.js`)        
