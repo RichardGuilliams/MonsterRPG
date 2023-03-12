@@ -1,8 +1,6 @@
 [
     {
-        "_id": {
-            "$oid": "64012f82f7f7f64d60718f21"
-        },
+        "_id": "64012f82f7f7f64d60718f21",
         "photo": "default.jpg",
         "role": "admin",
         "active": true,
@@ -12,9 +10,7 @@
         "__v": 0
     },
     {
-        "_id": {
-          "$oid": "6406a0df4a53e484d4caa8c9"
-        },
+        "_id": "6406a0df4a53e484d4caa8c9",
         "photo": "default.jpg",
         "role": "user",
         "active": true,
@@ -24,9 +20,7 @@
         "__v": 0
       },
       {
-        "_id": {
-          "$oid": "6406a0e94a53e484d4caa8cb"
-        },
+        "_id": "6406a0e94a53e484d4caa8cb",
         "photo": "default.jpg",
         "role": "user",
         "active": true,
@@ -36,9 +30,7 @@
         "__v": 0
       },
       {
-        "_id": {
-          "$oid": "6406a0f94a53e484d4caa8cd"
-        },
+        "_id": "6406a0f94a53e484d4caa8cd",
         "photo": "default.jpg",
         "role": "user",
         "active": true,
@@ -48,9 +40,7 @@
         "__v": 0
       },
       {
-        "_id": {
-          "$oid": "6406a16f4a53e484d4caa8d7"
-        },
+        "_id": "6406a16f4a53e484d4caa8d7",
         "photo": "default.jpg",
         "role": "subscriber",
         "active": true,
@@ -60,9 +50,7 @@
         "__v": 0
       },
       {
-        "_id": {
-          "$oid": "6406a1834a53e484d4caa8da"
-        },
+        "_id": "6406a1834a53e484d4caa8da",
         "photo": "default.jpg",
         "role": "subscriber",
         "active": true,
@@ -72,9 +60,7 @@
         "__v": 0
       },
       {
-        "_id": {
-          "$oid": "6406a18a4a53e484d4caa8dc"
-        },
+        "_id": "6406a18a4a53e484d4caa8dc",
         "photo": "default.jpg",
         "role": "subscriber",
         "active": true,
@@ -84,9 +70,7 @@
         "__v": 0
       },
       {
-        "_id": {
-          "$oid": "6406a1f217e957790c79c77a"
-        },
+        "_id": "6406a1f217e957790c79c77a",
         "photo": "default.jpg",
         "role": "moderator",
         "active": true,
@@ -96,9 +80,7 @@
         "__v": 0
       },
       {
-        "_id": {
-          "$oid": "6406a1fb17e957790c79c77c"
-        },
+        "_id": "6406a1fb17e957790c79c77c",
         "photo": "default.jpg",
         "role": "moderator",
         "active": true,

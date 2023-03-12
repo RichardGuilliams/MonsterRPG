@@ -1,5 +1,5 @@
 const express = require('express');
-const itemController = require('./../controllers/itemController');
+const armorController = require('./../controllers/armorController');
 const authController = require('./../controllers/authController');
 
 const router = express.Router();
@@ -8,15 +8,15 @@ router.use(authController.protect);
 
 router
     .route(`/`)
-    .get(itemController.getAllItems)
-    .post(authController.restrictTo('admin'), itemController.createItem)
+    .get(armorController.getAllArmors)
+    .post(authController.restrictTo('admin'), armorController.createArmor)
 ;
 
 router
     .route(`/:id`)
-    .get(itemController.getItem)
-    .delete(authController.restrictTo('admin'), itemController.deleteItem)
-    .patch(authController.restrictTo('admin'), itemController.updateItem)
+    .get(armorController.getArmor)
+    .delete(authController.restrictTo('admin'), armorController.deleteArmor)
+    .patch(authController.restrictTo('admin'), armorController.updateArmor)
 ;   
 
 module.exports = router;
