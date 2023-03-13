@@ -16,8 +16,9 @@ const globalErrorHandler = require('./controllers/errorController');
 
 // Backend Routing with Express
 const userRouter = require('./routes/userRoutes');
-const strongholdRouter = require('./routes/strongholdRoutes');
 const monsterRouter = require('./routes/monsterRoutes');
+const playerRouter = require('./routes/playerRoutes');
+const gameMonsterRouter = require('./routes/gameMonsterRoutes');
 const allianceRouter = require('./routes/allianceRoutes');
 const buildingRouter = require('./routes/buildingRoutes');
 const itemRouter = require('./routes/itemRoutes');
@@ -125,8 +126,9 @@ app.use((req, res, next) => {
 //Routes 
 app.use('/', viewRouter);
 app.use('/api/v1/users', userRouter);
-app.use('/api/v1/strongholds', strongholdRouter);
+app.use('/api/v1/players', playerRouter);
 app.use('/api/v1/monsters', monsterRouter);
+app.use('/api/v1/gameMonsters', gameMonsterRouter);
 app.use('/api/v1/buildings', buildingRouter);
 app.use('/api/v1/alliances', allianceRouter);
 app.use('/api/v1/items', itemRouter);

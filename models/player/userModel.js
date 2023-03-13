@@ -1,10 +1,11 @@
-var crypto = require('crypto'); 
-var mongoose = require('mongoose');
-var validator = require('validator');
-var bcrypt = require('bcryptjs');
+const crypto = require('crypto'); 
+const mongoose = require('mongoose');
+const validator = require('validator');
+const bcrypt = require('bcryptjs');
 
 const userSchema = new mongoose.Schema(
-{   
+{
+    // Account related data   
     name: {
         type: String,
         required: [true, 'A user needs to have a name ']},
@@ -49,7 +50,20 @@ const userSchema = new mongoose.Schema(
         type: Boolean,
         default: true,
         select: false
+    },
+
+    // Game related data
+    player: {
+        type: mongoose.Schema.ObjectId,
+        default: undefined
     }
+})
+
+userSchema.pre(/^find/, function(next){
+    if(this.player == undefined) next();
+    this.populate({
+        path: 'player'
+    })
 })
 
 userSchema.pre('save', async function(next){

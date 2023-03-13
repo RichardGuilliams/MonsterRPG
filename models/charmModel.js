@@ -1,5 +1,4 @@
-var mongoose = require('mongoose');
-var validator = require('validator');
+const mongoose = require('mongoose');
 
 const charmSchema = new mongoose.Schema(
     {

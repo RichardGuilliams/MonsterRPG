@@ -1,4 +1,4 @@
-const User = require('../models/userModel');
+const User = require('../models/player/userModel');
 const catchAsync = require('../utils/catchAsync');
 const Building = require('../models/buildingModel');
 

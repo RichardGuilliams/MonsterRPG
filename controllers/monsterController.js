@@ -1,6 +1,6 @@
 const multer = require('multer');
 const sharp = require('sharp');
-const Monster = require('./../models/monsterModel');
+const Monster = require('./../models/monster/monsterModel');
 const catchAsync = require('./../utils/catchAsync');
 const AppError = require('./../utils/appError');
 const factory = require('./handlerFactory');
@@ -62,6 +62,5 @@ exports.createMonster = catchAsync(async(req, res, next) => {
 
 exports.getMonster = factory.getOne(Monster);
 exports.getAllMonsters = factory.getAll(Monster);
-exports.createMonster = factory.createOne(Monster);
 exports.updateMonster = factory.updateOne(Monster);
 exports.deleteMonster = factory.deleteOne(Monster);
