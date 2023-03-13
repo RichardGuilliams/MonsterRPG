@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const ModelValidator = require('modelValidator');
+const ModelValidator = require('../../utils/modelValidator');
 
 const monsterCollectionSchema = new mongoose.Schema(
     {
@@ -12,7 +12,7 @@ const monsterCollectionSchema = new mongoose.Schema(
     }
 )
 
-playerSchema.pre(/^find/, function(next){
+monsterCollectionSchema.pre(/^find/, function(next){
     if(this.monsters == null) next();
     this.populate({
         path: 'monsters'

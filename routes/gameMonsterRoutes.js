@@ -17,6 +17,6 @@ router
     .get(gameMonsterController.getGameMonster)
     .delete(authController.restrictTo('user', 'subscriber', 'moderator', 'admin'), gameMonsterController.deleteGameMonster)
     .patch(authController.restrictTo('user', 'subscriber', 'moderator', 'admin'), gameMonsterController.updateGameMonster)
-;   
+;      
 
 module.exports = router;

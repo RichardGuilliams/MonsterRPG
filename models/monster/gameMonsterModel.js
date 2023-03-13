@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+const ModelValidator = require('../../utils/modelValidator');
 var validator = require('validator');
 
 const gameMonsterSchema = new mongoose.Schema(
@@ -15,8 +16,7 @@ const gameMonsterSchema = new mongoose.Schema(
         },
         lvl: {
             type: Number,
-            min: 1,
-            max: 100,
+            min: process.env.GAME_MONSTERLVL_MIN,
             default: 1
         },
         exp: {
@@ -26,65 +26,58 @@ const gameMonsterSchema = new mongoose.Schema(
         expToNext: {
             type: Number
         },
+        stats: {
+            type: Object
+        },
         hpGrowth: {
             type: Number,
-            min: process.env.GAME_STATGROWTH_MAJOR_MIN,
-            max: process.env.GAME_STATGROWTH_MAJOR_MAX,
+            min: process.env.GAME_STATGROWTH_GRAND_MIN,
             default: 0
         },
         mpGrowth: {
             type: Number,
-            min: process.env.GAME_STATGROWTH_MAJOR_MIN,
-            max: process.env.GAME_STATGROWTH_MAJOR_MAX,
+            min: process.env.GAME_STATGROWTH_GRAND_MIN,
             default: 0
         }
         ,
         strGrowth: {
             type: Number,
             min: process.env.GAME_STATGROWTH_MAJOR_MIN,
-            max: process.env.GAME_STATGROWTH_MAJOR_MAX,
             default: 0
         },
         defGrowth: {
             type: Number,
             min: process.env.GAME_STATGROWTH_MAJOR_MIN,
-            max: process.env.GAME_STATGROWTH_MAJOR_MAX,
             default: 0
         },
         spdGrowth: {
             type: Number,
             min: process.env.GAME_STATGROWTH_MAJOR_MIN,
-            max: process.env.GAME_STATGROWTH_MAJOR_MAX,
             default: 0
         },
         aglGrowth: {
             type: Number,
             min: process.env.GAME_STATGROWTH_MAJOR_MIN,
-            max: process.env.GAME_STATGROWTH_MAJOR_MAX,
             default: 0
         },
         mgkGrowth: {
             type: Number,
             min: process.env.GAME_STATGROWTH_MAJOR_MIN,
-            max: process.env.GAME_STATGROWTH_MAJOR_MAX,
             default: 0
         },
         sprtGrowth: {
             type: Number,
             min: process.env.GAME_STATGROWTH_MIN,
-            max: process.env.GAME_STATGROWTH_MAX,
             default: 0
         },
         critDmgGrowth: {
             type: Number,
             min: process.env.GAME_STATGROWTH_MINOR_MIN,
-            max: process.env.GAME_STATGROWTH_MINOR_MAX,
             default: 0
         },
         critRateGrowth: {
             type: Number,
             min: process.env.GAME_STATGROWTH_MINOR_MIN,
-            max: process.env.GAME_STATGROWTH_MINOR_MAX,
             default: 0
         }
     }
@@ -95,6 +88,8 @@ gameMonsterSchema.pre(/^find/, function(next){
         path: 'owner',
         select: 'name'
     })
+
+    next();
 })
 
 const GameMonster = mongoose.model('GameMonster', gameMonsterSchema);

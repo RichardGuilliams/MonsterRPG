@@ -2,31 +2,45 @@ const GameMonster = require('../../models/monster/gameMonsterModel');
 const Monster = require('../../models/monster/monsterModel');
 const catchAsync = require('../../utils/catchAsync');
 const AppError = require('../../utils/appError');
+const GameFeatures = require('../../utils/gameFeatures');
 const factory = require('./../handlerFactory');
 
 exports.createGameMonster = catchAsync(async(req, res, next) => {
-    console.log('hi')
-    const monster = {
+    const referencedMonster = await Monster.findById(req.body.monster);
+
+    let monster = {
         owner: req.user.id,
-        monster: await Monster.findById(req.body.monster),
+        monster: referencedMonster,
         nickname: req.body.nickname,
-        hpGrowth: req.body.hpGrowth,
-        mpGrowth: req.body.mpGrowth,
-        strGrowth: req.body.strGrowth,
-        defGrowth: req.body.defGrowth,
-        spdGrowth: req.body.spdGrowth,
-        aglGrowth: req.body.aglGrowth,
-        mgkGrowth: req.body.mgkGrowth,
-        sprtGrowth: req.body.sprtGrowth,
-        critRateGrowth: req.body.critRateGrowth,
-        critDmgGrowth: req.body.critDmgGrowth
+        stats: {
+            hp: GameFeatures.randomize(req.body.hpGrowth, referencedMonster.stats.hp),
+            mp: GameFeatures.randomize(req.body.mpGrowth, referencedMonster.stats.mp),
+            str: GameFeatures.randomize(req.body.strGrowth,  referencedMonster.stats.str),
+            def: GameFeatures.randomize(req.body.defGrowth,  referencedMonster.stats.def),
+            spd: GameFeatures.randomize(req.body.spdGrowth,  referencedMonster.stats.spd),
+            agl: GameFeatures.randomize(req.body.aglGrowth,  referencedMonster.stats.agl),
+            mgk: GameFeatures.randomize(req.body.mgkGrowth,  referencedMonster.stats.mgk),
+            sprt: GameFeatures.randomize(req.body.sprtGrowth,  referencedMonster.stats.sprt),
+            critRate: GameFeatures.randomize(req.body.critRateGrowth,  referencedMonster.stats.critRate),
+            critDmg: GameFeatures.randomize(req.body.critDmgGrowth,  referencedMonster.stats.critDmg)
+        },
+        hpGrowth: GameFeatures.randomize(req.body.hpGrowth, referencedMonster.stats.hp),
+        mpGrowth: GameFeatures.randomize(req.body.mpGrowth, referencedMonster.stats.mp),
+        strGrowth: GameFeatures.randomize(req.body.strGrowth,  referencedMonster.stats.str),
+        defGrowth: GameFeatures.randomize(req.body.defGrowth,  referencedMonster.stats.def),
+        spdGrowth: GameFeatures.randomize(req.body.spdGrowth,  referencedMonster.stats.spd),
+        aglGrowth: GameFeatures.randomize(req.body.aglGrowth,  referencedMonster.stats.agl),
+        mgkGrowth: GameFeatures.randomize(req.body.mgkGrowth,  referencedMonster.stats.mgk),
+        sprtGrowth: GameFeatures.randomize(req.body.sprtGrowth,  referencedMonster.stats.sprt),
+        critRateGrowth: GameFeatures.randomize(req.body.critRateGrowth,  5),
+        critDmgGrowth: GameFeatures.randomize(req.body.critDmgGrowth,  5)
     }
     
-    newMonster = await GameMonster.create(monster);
+    monster = await GameMonster.create(monster);
 
     res.status(200).json({
         status: 'success',
-        newMonster
+        monster
     })
 })
 

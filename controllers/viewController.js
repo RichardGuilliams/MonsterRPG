@@ -1,6 +1,6 @@
 const User = require('../models/player/userModel');
 const catchAsync = require('../utils/catchAsync');
-const Building = require('../models/buildingModel');
+const Building = require('../models/building/buildingModel');
 
 exports.alerts = (req, res, next) => {
   const { alert } = req.query;
