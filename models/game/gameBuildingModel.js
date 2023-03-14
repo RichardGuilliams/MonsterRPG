@@ -23,7 +23,6 @@ const gameBuildingSchema = new mongoose.Schema(
 gameBuildingSchema.pre(/^find/, function(next){
     ModelValidator.populate(this, 'owner', 'name', next);
     ModelValidator.populate(this, 'leader', 'name', next);
-    next();
 })
 
 const GameBuilding = mongoose.model('GameBuilding', gameBuildingSchema);

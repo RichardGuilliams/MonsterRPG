@@ -4,6 +4,7 @@ const itemSchema = new mongoose.Schema(
     {
         name: {
             type: String,
+            unique: [true, 'an items name must be unique'],
             required: [true, 'An item must have a name']
         },
         imgUrl: {

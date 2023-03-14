@@ -4,7 +4,7 @@ const armorSchema = new mongoose.Schema(
     {
         name: {
             type: String,
-            unique: [true, 'A name must be unique'],
+            unique: [true, 'An armors name must be unique'],
             required: [true, 'An armor must have a name']
         },
         imgUrl: {

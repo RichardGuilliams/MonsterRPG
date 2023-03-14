@@ -1,8 +1,8 @@
 const mongoose = require('mongoose')
 
-exports.limitArray = function(limit){
+exports.limitArray = function(min, max){
     return function(value){
-        return value.length <= limit;
+        return value.length >= min && value.length <= max
     }
 }
 

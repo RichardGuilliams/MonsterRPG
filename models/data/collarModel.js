@@ -5,6 +5,7 @@ const collarSchema = new mongoose.Schema(
     {
         name: {
             type: String,
+            unique: [true, 'a collars name must be unique'],
             required: [true, 'An collar must have a name']
         },
         imgUrl: {
@@ -17,7 +18,7 @@ const collarSchema = new mongoose.Schema(
         },
         charmSlots: {
             type: [mongoose.Schema.ObjectId],
-            validate: [ModelValidator.limitArray(5), 'A collar cannot have more than 5 charm slots']
+            validate: [ModelValidator.limitArray(0, 5), 'A collar cannot have more than 5 charm slots']
         }
     }
 )
