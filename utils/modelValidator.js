@@ -14,7 +14,7 @@ exports.setToMax = function(max){
     }
 }
 
-exports.populate = function(Schema, path, select){
+exports.populate = function(Schema, path, select, next){
     if(Schema[path] == null) next();
     Schema.populate({
         path,

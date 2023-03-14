@@ -1,7 +1,6 @@
-const GameMonster = require('../../models/monster/gameMonsterModel');
-const Monster = require('../../models/monster/monsterModel');
+const GameMonster = require('../../models/game/gameMonsterModel');
+const Monster = require('../../models/data/monsterModel');
 const catchAsync = require('../../utils/catchAsync');
-const AppError = require('../../utils/appError');
 const GameFeatures = require('../../utils/gameFeatures');
 const factory = require('./../handlerFactory');
 

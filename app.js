@@ -13,25 +13,32 @@ const cors = require('cors');
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
 
-
 // Backend Routing with Express
 const userRouter = require('./routes/userRoutes');
-const playerRouter = require('./routes/playerRoutes');
+const playerRouter = require('./routes/player/playerRoutes');
+const allianceRouter = require('./routes/data/allianceRoutes');
+const locationRouter = require('./routes/data/locationRoutes');
 
-const monsterRouter = require('./routes/monsterRoutes');
-const gameMonsterRouter = require('./routes/gameMonsterRoutes');
-const monsterCollectionRouter = require('./routes/monsterCollectionRoutes');
+const monsterRouter = require('./routes/data/monsterRoutes');
+const gameMonsterRouter = require('./routes/game/gameMonsterRoutes');
 
-const buildingRouter = require('./routes/buildingRoutes');
-const gameBuildingRouter = require('./routes/gameBuildingRoutes');
-const buildingCollectionRouter = require('./routes/buildingCollectionRoutes');
+const buildingRouter = require('./routes/data/buildingRoutes');
+const gameBuildingRouter = require('./routes/game/gameBuildingRoutes');
 
-const allianceRouter = require('./routes/allianceRoutes');
-const itemRouter = require('./routes/itemRoutes');
-const armorRouter = require('./routes/armorRoutes');
-const weaponRouter = require('./routes/weaponRoutes');
-const collarRouter = require('./routes/collarRoutes');
-const charmRouter = require('./routes/charmRoutes');
+const itemRouter = require('./routes/data/itemRoutes');
+const gameItemRouter = require('./routes/game/gameItemRoutes');
+
+const armorRouter = require('./routes/data/armorRoutes');
+const gameArmorRouter = require('./routes/game/gameArmorRoutes');
+
+const weaponRouter = require('./routes/data/weaponRoutes');
+const gameWeaponRouter = require('./routes/game/gameWeaponRoutes');
+
+const collarRouter = require('./routes/data/collarRoutes');
+const gameCollarRouter = require('./routes/game/gameCollarRoutes');
+
+const charmRouter = require('./routes/data/charmRoutes');
+const gameCharmRouter = require('./routes/game/gameCharmRoutes');
 
 //Front End Rendering with Pug
 const viewRouter = require('./routes/viewRoutes');
@@ -118,35 +125,39 @@ app.use(hpp({
 app.use(compression());
 
 //Serving static files
-
 app.use((req, res, next) => {
     req.requestTime = new Date().toISOString();
     next();
 });
 
-app.use((req, res, next) => {
-    req.requestTime = new Date().toISOString();
-    next();
-})
-
 //Routes 
 app.use('/', viewRouter);
+
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/players', playerRouter);
+app.use('/api/v1/alliances', allianceRouter);
+app.use('/api/v1/locations', locationRouter);
+
 app.use('/api/v1/monsters', monsterRouter);
 app.use('/api/v1/gameMonsters', gameMonsterRouter);
-app.use('/api/v1/playerMonsters', monsterCollectionRouter);
 
 app.use('/api/v1/buildings', buildingRouter);
 app.use('/api/v1/gameBuildings', gameBuildingRouter);
-app.use('/api/v1/playerBuildings', buildingCollectionRouter);
 
-app.use('/api/v1/alliances', allianceRouter);
 app.use('/api/v1/items', itemRouter);
+app.use('/api/v1/gameItems', gameItemRouter);
+
 app.use('/api/v1/armors', armorRouter);
+app.use('/api/v1/gameArmors', gameArmorRouter);
+
 app.use('/api/v1/weapons', weaponRouter);
+app.use('/api/v1/gameWeapons', gameWeaponRouter);
+
 app.use('/api/v1/collars', collarRouter);
+app.use('/api/v1/gameCollars', gameCollarRouter);
+
 app.use('/api/v1/charms', charmRouter);
+app.use('/api/v1/gameCharms', gameCharmRouter);
 
 app.all('*', (req, res, next) => {
     next(new AppError(`cant find ${req.originalUrl} on this server`, 404));
