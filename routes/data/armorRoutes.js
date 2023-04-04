@@ -1,22 +1,20 @@
-const express = require('express');
-const armorController = require('../../controllers/data/armorController');
-const authController = require('../../controllers/authController');
+const express = require("express");
+const armorController = require("../../controllers/data/armorController");
+const authController = require("../../controllers/authController");
 
 const router = express.Router();
 
 router.use(authController.protect);
 
 router
-    .route(`/`)
-    .get(armorController.getAllArmors)
-    .post(authController.restrictTo('admin'), armorController.createArmor)
-;
+  .route(`/`)
+  .get(armorController.getAllArmors)
+  .post(authController.restrictTo("admin"), armorController.createArmor);
 
 router
-    .route(`/:id`)
-    .get(armorController.getArmor)
-    .delete(authController.restrictTo('admin'), armorController.deleteArmor)
-    .patch(authController.restrictTo('admin'), armorController.updateArmor)
-;   
+  .route(`/:id`)
+  .get(armorController.getArmor)
+  .delete(authController.restrictTo("admin"), armorController.deleteArmor)
+  .patch(authController.restrictTo("admin"), armorController.updateArmor);
 
 module.exports = router;

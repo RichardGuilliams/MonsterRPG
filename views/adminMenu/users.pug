@@ -4,8 +4,9 @@ include .././mixins/userCard
 
 block content    
     main.main 
+        a(href=`/createUser`) Create New User
         .main__container 
             h3 Users
-            each user in users
+            each user in objects
                 +userCard(user)
 

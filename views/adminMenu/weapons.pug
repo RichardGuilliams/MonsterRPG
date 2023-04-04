@@ -4,8 +4,9 @@ include .././mixins/weaponCard
 
 block content    
     main.main 
+        a(href=`/createWeapon`) Create New Weapon
         .main__container 
             h3 Weapons
-            each weapon in weapons
+            each weapon in objects
                 +weaponCard(weapon)
 

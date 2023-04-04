@@ -4,8 +4,9 @@ include .././mixins/allianceCard
 
 block content    
     main.main 
+        a(href=`/createAlliance`) Create New Alliance
         .main__container 
-            h3 alliances
-            each alliance in alliances
+            h3 Alliances
+            each alliance in objects
                 +allianceCard(alliance)
 

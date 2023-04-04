@@ -3,9 +3,10 @@ extends ../base
 include .././mixins/itemCard
 
 block content    
-    main.main 
+    main.main
+        a(href=`/createItem`) Create New Item
         .main__container 
-            h3 items
-            each item in items
+            h3 Items
+            each item in objects
                 +itemCard(item)
 

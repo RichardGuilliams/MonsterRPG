@@ -4,8 +4,9 @@ include .././mixins/buildingCard
 
 block content    
     main.main 
+        a(href=`/createBuilding`) Create New Building
         .main__container 
-            h3 buildings
-            each building in buildings
+            h3 Buildings
+            each building in objects
                 +buildingCard(building)
 

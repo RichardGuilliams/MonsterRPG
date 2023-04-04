@@ -40,6 +40,8 @@ const gameCollarRouter = require('./routes/game/gameCollarRoutes');
 const charmRouter = require('./routes/data/charmRoutes');
 const gameCharmRouter = require('./routes/game/gameCharmRoutes');
 
+const moveRouter = require('./routes/data/moveRoutes');
+
 //Front End Rendering with Pug
 const viewRouter = require('./routes/viewRoutes');
 
@@ -158,6 +160,8 @@ app.use('/api/v1/gameCollars', gameCollarRouter);
 
 app.use('/api/v1/charms', charmRouter);
 app.use('/api/v1/gameCharms', gameCharmRouter);
+
+app.use('/api/v1/moves', moveRouter);
 
 app.all('*', (req, res, next) => {
     next(new AppError(`cant find ${req.originalUrl} on this server`, 404));

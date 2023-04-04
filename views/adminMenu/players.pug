@@ -4,8 +4,9 @@ include .././mixins/playerCard
 
 block content    
     main.main 
+        a(href=`/createPlayer`) Create New Player
         .main__container 
             h3 Players
-            each player in players
+            each Player in objects
                 +playerCard(player)
 

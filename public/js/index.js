@@ -14,6 +14,7 @@ import { settingsForm } from './forms/settingsForm'
 import { monsterForm } from './forms/monsterForm'
 import { signupForm } from './forms/signupForm'
 import { passwordForm } from './forms/passwordForm'
+import { moveForm } from './forms/moveForm'
 
 // DOM ELEMENTS
 const mapBox = document.getElementById('map');
@@ -42,6 +43,7 @@ signupForm(signup);
 settingsForm(updateSettings)
 passwordForm(updateSettings)
 monsterForm(create);
+moveForm(create);
 
 if(logoutBtn) logoutBtn.addEventListener('click', logout);
 

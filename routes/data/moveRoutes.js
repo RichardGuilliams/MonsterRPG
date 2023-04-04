@@ -1,5 +1,5 @@
 const express = require("express");
-const monsterController = require("../../controllers/data/monsterController");
+const moveController = require("../../controllers/data/moveController");
 const photoController = require("../../controllers/photoController");
 const authController = require("../../controllers/authController");
 
@@ -9,18 +9,18 @@ router.use(authController.protect);
 
 router
   .route(`/`)
-  .get(monsterController.getAllMonsters)
+  .get(moveController.getAllMoves)
   .post(
     authController.restrictTo("admin"),
     photoController.uploadPhoto,
-    photoController.resizePhoto("monster"),
-    monsterController.createMonster
+    photoController.resizePhoto("move"),
+    moveController.createMove
   );
 
 router
   .route(`/:id`)
-  .get(monsterController.getMonster)
-  .delete(authController.restrictTo("admin"), monsterController.deleteMonster)
-  .patch(authController.restrictTo("admin"), monsterController.updateMonster);
+  .get(moveController.getMove)
+  .delete(authController.restrictTo("admin"), moveController.deleteMove)
+  .patch(authController.restrictTo("admin"), moveController.updateMove);
 
 module.exports = router;

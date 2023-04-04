@@ -1,0 +1,12 @@
+extends ../base
+
+include .././mixins/moveCard
+
+block content    
+    main.main 
+        a(href=`/createMove`) Create New Move
+        .main__container 
+            h3 Moves
+            each move in objects
+                +moveCard(move)
+

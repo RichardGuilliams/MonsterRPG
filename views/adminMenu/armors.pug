@@ -4,8 +4,9 @@ include .././mixins/armorCard
 
 block content    
     main.main 
+        a(href=`/createArmor`) Create New Armor
         .main__container 
             h3 Armors
-            each armor in armors
+            each armor in objects
                 +armorCard(armor)
 

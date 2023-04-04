@@ -4,8 +4,9 @@ include .././mixins/charmCard
 
 block content    
     main.main 
+        a(href=`/createCharm`) Create New Charm
         .main__container 
             h3 Charms
-            each charm in charms
+            each charm in objects
                 +charmCard(charm)
 

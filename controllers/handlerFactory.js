@@ -88,3 +88,13 @@ exports.getAll = Model =>
       }
     });
   });
+
+  exports.getView = (Model, path, title) =>
+  catchAsync(async (req, res, next) => {
+    const objects = await Model.find();
+
+    res.status(200).render(`${path}`, {
+      title: `${title}`,
+      objects
+    });
+  });

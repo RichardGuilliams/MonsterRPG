@@ -4,8 +4,9 @@ include .././mixins/collarCard
 
 block content    
     main.main 
+        a(href=`/createCollar`) Create New Collar
         .main__container 
             h3 Collars
-            each collar in collars
+            each collar in objects
                 +collarCard(collar)
 

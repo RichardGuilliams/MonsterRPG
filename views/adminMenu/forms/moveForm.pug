@@ -1,0 +1,64 @@
+extends ../../base
+
+include ../../mixins/forms/input
+
+block content    
+    main.main
+        .move-form
+            a(href='/moves') Back To Moves
+            h2.heading-secondary.ma-bt-lg Create Move
+            form.form.form--move(action='/submit-move-data' method="POST")
+                .form__group
+                    +formInput('Name', 'text', 'move-name', 'New move', true)
+                    
+                .form__group
+                    +formInput('Description', 'text', 'move-desc', 'move Description', true)
+                
+                .form__group
+                    +formSelect('Rank', 'move-rank', true, ['Pawn', 'Knight', 'Champion', 'Master'])
+
+                .form__group
+                    p Move Types:
+                    +formSelect('Type 1', 'move-type1', true, ['Beast', 'Elemental', 'Avian', 'Amphian', 'Serpent', 'Brood', 'Divine', 'Daemon', 'Necro', 'Plant'])
+                    +formSelect('Type 2', 'move-type2', true, ['None', 'Beast', 'Elemental', 'Avian', 'Amphian', 'Serpent', 'Brood', 'Divine', 'Daemon', 'Necro', 'Plant']) 
+
+                .form__group
+                    p Move Attributes:
+                    +formSelect('Attribute 1', 'move-attribute1', true, ['Fire', 'Water', 'Ice', 'Electric', 'Air', 'Light', 'Dark', 'Earth', 'Poison', 'Physical'])
+                    +formSelect('Attribute 2', 'move-attribute2', true, ['None', 'Fire', 'Water', 'Ice', 'Electric', 'Air', 'Light', 'Dark', 'Earth', 'Poison', 'Physical'])
+
+                .form__group
+                    p Stats
+                    +formInput('Power', 'number', 'move-power', 0, true)
+                    +formInput('Accuracy', 'number', 'move-accuracy', 0, true)
+
+                .form__group
+                    p Move Effect:
+                    +formSelect('Effect', 'move-effect', true, [
+                        'None', 'Poison', 'Burn', 'Frozen', 'Stunned',
+                        'Paralyzed', 'Undead', 'Immortal', 'Ethereal',
+                        'KO', 'Berserk', 'Confused', 'Slow', 'Haste',
+                        'Shell', 'Protect', 'Barrier', 'Float', 'Stone',
+                        'Charmed'
+                    ])              
+
+                .form__group
+                    p Move Modifier:
+                    +formSelect('Modifier', 'move-modifier', true, ['None', 'Hp', 'Mp', 'Atk', 'Def', 'MAtk', 'MDef', 'Spd', 'Agl', 'CritDmg', 'CritRate', 'Luk', 'Acc', 'Ev'])              
+
+                .form__group
+                    p Move Target Stat:
+                    +formSelect('Stat', 'move-target-stat', true, ['None', 'Hp', 'Mp', 'Atk', 'Def', 'MAtk', 'MDef', 'Spd', 'Agl', 'CritDmg', 'CritRate', 'Luk', 'Acc', 'Ev'])                  
+
+                .form__group
+                    p Move Target:
+                    +formSelect('Target', 'move-target', true, ['Self', 'One', 'Ally', 'All Allies', 'Enemy', 'All Enemy', 'All'])                  
+
+
+                .form__group.form__photo-upload
+                    label.form__label(for='move-photo') Choose Photo
+                    input.form__upload(type='file', accept='image/*', id='move-photo', name='move-photo')
+
+                .form__group
+                    button.btn.btn--green Create Move
+
