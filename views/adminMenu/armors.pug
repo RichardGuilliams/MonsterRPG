@@ -1,0 +1,11 @@
+extends ../base
+
+include .././mixins/armorCard
+
+block content    
+    main.main 
+        .main__container 
+            h3 Armors
+            each armor in armors
+                +armorCard(armor)
+

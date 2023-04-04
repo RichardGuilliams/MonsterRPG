@@ -10,13 +10,14 @@ const monsterSchema = new mongoose.Schema(
             unique: [true, 'a monsters name must be unique'],
             required: [true, 'A monster must have a name']
         },
-        tamerType: {
+        tamerTypes: {
             type: [String],
             required: [true, 'A monster must have at least one class that can tame it'],
             enum: {
-                values:['Geomancer', 'Beastmaster', 'Rogue', 'Mage', 'Blademaster'],
-                message: 'Tamer Types for monsters can only be Geomancer, Beastmaster, Rogue, Mage or Blademaster'
-            }
+                values:['None', 'Geomancer', 'Beastmaster', 'Rogue', 'Mage', 'Psychic'],
+                message: 'Tamer Types for monsters can only be Geomancer, Beastmaster, Rogue, Mage or Psychic'
+            },
+            validation: [ModelValidator.limitArray(1, 2), 'A monster needs at least one tamer type but cannot have more than 2']
         },
         rank: {
             type: String,
@@ -30,61 +31,33 @@ const monsterSchema = new mongoose.Schema(
             type: String,
             required: [true, 'A monster must have a description']
         },
-        imgUrl: {
+        photo: {
             type: String,
             required: [true, 'A monster must have an image']
         },
         stats: {
             type: Object
         },
-        canBreed: {
-            type: Boolean,
-            default: true
-        },
-        canFuse: {
-            type: Boolean,
-            default: false,
-        },
         fusionMonsters: {
             type: [mongoose.Schema.ObjectId],
             ref: 'Monster',
             validate: [ModelValidator.limitArray(0, 5), 'monster cant have more than 5 fusion monsters']
         },
-        weaknesses: {
-            type: [String],
-            validate: [ModelValidator.limitArray(0, 4), 'monster cant have more than 4 weaknesses'],
-            enum: {
-                values:['Fire', 'Water', 'Ice', 'Electric', 'Air', 'Holy', 'Unholy', 'Earth', 'Poison', 'Physical'],
-                message: 'A weakness can only be Fire, Water, Ice, Electric, Air, Earth, Holy, Unholy, Poison and Physical'
-            }
-        },
         attributes: {
             type: [String],
-            validate: [ModelValidator.limitArray(0, 4), 'monster cant have more than 4 attributes'],
+            validate: [ModelValidator.limitArray(0, 2), 'monster cant have more than 4 attributes'],
             enum: {
-                values:['Fire', 'Water', 'Ice', 'Electric', 'Air', 'Holy', 'Unholy', 'Earth', 'Poison', 'Physical'],
-                message: 'An attribute can only be Fire, Water, Ice, Electric, Air, Earth, Holy, Unholy, Poison and Physical'
+                values:['None', 'Fire', 'Water', 'Ice', 'Electric', 'Air', 'Light', 'Dark', 'Earth', 'Poison', 'Physical'],
+                message: 'An attribute can only be Fire, Water, Ice, Electric, Air, Earth, Light, Dark, Poison and Physical'
             }
         },
         types: {
             type: [String],
             validate: [ModelValidator.limitArray(1, 2), 'A monster must have at least 1 but no more than 2 types'],
             enum: {
-                values:['Avian', 'Beast', 'Elemental', 'Serpent', 'Brood', 'Divine', 'Daemon', 'Fae', 'Necro', 'Plant'],
+                values:['None', 'Avian', 'Beast', 'Elemental', 'Serpent', 'Brood', 'Divine', 'Daemon', 'Fae', 'Necro', 'Plant'],
                 message: 'A monster type can only be Avian, Beast, Elemental, Serpent, Brood, Divine, Daemon, Fae, Necro ot Plant'
             }
-        },
-        moveTypes: {
-            type: [String],
-            validate: [ModelValidator.limitArray(1, 4), 'A monster must have at least 1 but no more than 4 move types'],
-            enum: {
-                values:['Fire', 'Water', 'Ice', 'Electric', 'Air', 'Holy', 'Unholy', 'Earth', 'Poison', 'Physical'],
-                message: 'An attribute can only be Fire, Water, Ice, Electric, Air, Earth, Holy, Unholy, Poison and Physical'
-            }
-        },
-        passiveAbilities: {
-            type: [mongoose.Schema.ObjectId],
-            validate: [ModelValidator.limitArray(0, 2), 'monster cant have more than 2 passive abilities']
         }
     }
 )   
@@ -92,7 +65,7 @@ const monsterSchema = new mongoose.Schema(
 monsterSchema.pre(/^find/, function(next){
     this.populate({
         path: 'fusionMonsters',
-        select: 'name attributes'
+        select: 'name attributes photo'
     })
     next();
 })

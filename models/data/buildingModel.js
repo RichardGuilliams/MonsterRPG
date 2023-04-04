@@ -7,7 +7,7 @@ const buildingSchema = new mongoose.Schema(
             unique: [true, 'a buildings name must be unique'],
             required: [true, 'A building must have a name']
         },
-        imgUrl: {
+        photo: {
             type: String,
             required: [true, 'A building must have an image']
         },

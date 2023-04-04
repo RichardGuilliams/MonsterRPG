@@ -1,0 +1,11 @@
+extends ../base
+
+include .././mixins/playerCard
+
+block content    
+    main.main 
+        .main__container 
+            h3 Players
+            each player in players
+                +playerCard(player)
+

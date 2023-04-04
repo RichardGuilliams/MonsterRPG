@@ -8,7 +8,7 @@ const locationSchema = new mongoose.Schema(
             unique: [true, 'A locations name must be unique'],
             required: [true, 'An Location must have a name']
         },
-        imgUrl: {
+        photo: {
             type: String,
             required: [true, 'An Location must have an image']
         },

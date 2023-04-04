@@ -6,7 +6,7 @@ const weaponSchema = new mongoose.Schema(
             type: String,
             required: [true, 'An weapon must have a name']
         },
-        imgUrl: {
+        photo: {
             type: String,
             required: [true, 'An weapon must have an image']
         },

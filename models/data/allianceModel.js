@@ -6,7 +6,7 @@ const allianceSchema = new mongoose.Schema(
             type: String,
             required: [true, 'A alliance must have a name']
         },
-        imgUrl: {
+        photo: {
             type: String,
             required: [true, 'A alliance must have an image']
         },

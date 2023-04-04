@@ -17,9 +17,17 @@ block content
 
                 if (user.role === 'admin')
                     .admin-nav
-                        h5.admin-nav__heading Admin
+                        h2.admin-nav__heading Admin
                         ul.side-nav
-                            +navItem('#', 'Manage Users', 'users', false)
+                            +navItem('/users', 'Manage Users', 'users', false)
+                            +navItem('/alliances', 'Manage Alliances', 'alliances', false)
+                            +navItem('/buildings', 'Manage Buildings', 'buildings', false)
+                            +navItem('/armors', 'Manage Armors', 'armors', false)                           
+                            +navItem('/weapons', 'Manage Weapons', 'weapons', false)
+                            +navItem('/monsters', 'Manage Monsters', 'monsters', false)
+                            +navItem('/charms', 'Manage Charms', 'charms', false)
+                            +navItem('/collars', 'Manage Collars', 'collars', false)
+                            +navItem('/locations', 'Manage Locations', 'locations', false)
 
             .user-view__content
                 .user-view__form-container

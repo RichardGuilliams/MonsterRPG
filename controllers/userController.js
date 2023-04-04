@@ -4,6 +4,7 @@ const User = require('./../models/player/userModel');
 const catchAsync = require('./../utils/catchAsync');
 const AppError = require('./../utils/appError');
 const factory = require('./handlerFactory');
+const ObjectFeatures = require('../utils/objectFeatures');
 
 // const multerStorage = multer.diskStorage({
 //   destination: (req, file, cb) => {
@@ -69,8 +70,8 @@ exports.updateMe = catchAsync(async (req, res, next) => {
     );
   }
 
-  // 2) Filtered out unwanted fields names that are not allowed to be updated
-  const filteredBody = filterObj(req.body, 'name', 'email');
+  // 2) Filtered out unwanted fields names that are not allowed to be updated, include names you wish to keep.
+  const filteredBody = ObjectFeatures.filterObj(req.body, 'name', 'email');
   if (req.file) filteredBody.photo = req.file.filename;
 
   // 3) Update user document

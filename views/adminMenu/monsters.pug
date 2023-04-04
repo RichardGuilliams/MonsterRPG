@@ -1,0 +1,12 @@
+extends ../base
+
+include .././mixins/monsterCard
+
+block content    
+    main.main 
+        a(href=`/createMonster`) Create New Monster
+        .main__container 
+            h3 Monsters
+            each monster in monsters
+                +monsterCard(monster)
+

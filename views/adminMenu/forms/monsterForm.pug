@@ -1,0 +1,66 @@
+extends ../../base
+
+include ../../mixins/forms/input
+
+block content    
+    main.main
+        .monster-form
+            a(href='/monsters') Back To Monsters
+            h2.heading-secondary.ma-bt-lg Create Monster
+            form.form.form--monster(action='/submit-monster-data' method="POST")
+                .form__group
+                    +formInput('Name', 'text', 'monster-name', 'New Monster', true)
+                .form__group
+                    +formInput('Description', 'text', 'monster-desc', 'Monster Description', true)
+
+                .form__group
+                    p Tamer Types:
+                    +formSelect('Type 1', 'monster-tamer-type1', true, ['Beastmaster', 'Geomancer', 'Rogue', 'Mage', 'Psychic'])
+                    +formSelect('Type 2', 'monster-tamer-type2', true, ['None', 'Beastmaster', 'Geomancer', 'Rogue', 'Mage', 'Psychic'])
+                
+                .form__group
+                    +formSelect('Rank', 'monster-rank', true, ['Pawn', 'Knight', 'Champion', 'Master'])
+
+                .form__group
+                    p Monster Types:
+                    +formSelect('Type 1', 'monster-type1', true, ['Beast', 'Elemental', 'Avian', 'Amphian', 'Serpent', 'Brood', 'Divine', 'Daemon', 'Necro', 'Plant'])
+                    +formSelect('Type 2', 'monster-type2', true, ['None', 'Beast', 'Elemental', 'Avian', 'Amphian', 'Serpent', 'Brood', 'Divine', 'Daemon', 'Necro', 'Plant']) 
+
+                .form__group
+                    p Monster Attributes:
+                    +formSelect('Attribute 1', 'monster-attribute1', true, ['Fire', 'Water', 'Ice', 'Electric', 'Air', 'Light', 'Dark', 'Earth', 'Poison', 'Physical'])
+                    +formSelect('Attribute 2', 'monster-attribute2', true, ['None', 'Fire', 'Water', 'Ice', 'Electric', 'Air', 'Light', 'Dark', 'Earth', 'Poison', 'Physical'])                  
+
+                .form__group
+                    p Stats
+                    +formInput('HP', 'number', 'monster-hp', 0, true)
+                    +formInput('MP', 'number', 'monster-mp', 0, true)
+                    +formInput('ATK', 'number', 'monster-atk', 0, true)
+                    +formInput('DEF', 'number', 'monster-def', 0, true)
+                    +formInput('MATK', 'number', 'monster-mAtk', 0, true)
+                    +formInput('MDEF', 'number', 'monster-mDef', 0, true)
+                    +formInput('SPD', 'number', 'monster-spd', 0, true)
+                    +formInput('AGL', 'number', 'monster-agl', 0, true)
+                    +formInput('LUK', 'number', 'monster-luk', 0, true)
+                    
+                .form__group
+                    - monsters.splice(0, 0, {name: 'None'}) 
+                    p Fusion Monsters: 
+                    +formSelect('Monster 1', 'monster-fusion1', true, monsters.map(el => { return el.name }))
+                    +formSelect('Monster 2', 'monster-fusion2', true, monsters.map(el => { return el.name }))
+                    +formSelect('Monster 3', 'monster-fusion3', true, monsters.map(el => { return el.name }))
+                    +formSelect('Monster 4', 'monster-fusion4', true, monsters.map(el => { return el.name }))
+                    +formSelect('Monster 5', 'monster-fusion5', true, monsters.map(el => { return el.name }))
+
+                //- .form__group
+                    //- p Attributes:
+                        //- +formSelect('Type 1', 'monster-tamer-type1', 'true', ['None', 'Fire', 'Water', 'Earth', 'Air', 'Light', 'Dark', 'Poison'])
+
+                        
+                .form__group.form__photo-upload
+                    label.form__label(for='monster-photo') Choose Photo
+                    input.form__upload(type='file', accept='image/*', id='monster-photo', name='monster-photo')
+
+                .form__group
+                    button.btn.btn--green Create Monster
+

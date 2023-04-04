@@ -1,0 +1,50 @@
+mixin monsterCard(monster)
+    - let i = 0
+    .card.monsterCard
+        .card__group
+            img(src=`/img/monsters/${monster.photo}`)
+            .card__group--section
+                h3 Name:
+                p= `${monster.name}`
+            .card__group--section
+                h3 Description:
+                p= `${monster.desc}`
+            .card__group--section 
+                h3 Rank:
+                p= `${monster.rank}`
+
+        .card__group
+            h3 Base Stats:
+            .card__group--section
+                each stat in monster.stats
+                    section 
+                        p=`${Object.keys(monster.stats)[i]}: ${stat}`
+                        - i++
+                - i = 0;
+
+        .card__group
+            h3 Types:
+            each type in monster.types
+                p=`${type}`
+
+        .card__group
+            h3 Tamer Types:
+            each tamerType in monster.tamerTypes
+                p=`${tamerType}`
+
+        .card__group
+            h3 Attributes:
+            each attribute in monster.attributes
+                p=`${attribute}`
+                
+        .card__group
+            if (monster.fusionMonsters.length > 0)
+                h3 Fusion Monsters:
+                each fusionMonster in monster.fusionMonsters
+                    if (fusionMonster)
+                        - console.log(fusionMonster)
+                        img(src=`/img/monsters/${fusionMonster.photo}`)
+                        p=`${fusionMonster.name}`
+
+
+    

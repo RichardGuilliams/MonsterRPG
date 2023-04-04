@@ -14,7 +14,7 @@ exports.deleteOne = Model =>
       status: 'success',
       data: null
     });
-  });
+});
 
 exports.updateOne = Model =>
   catchAsync(async (req, res, next) => {

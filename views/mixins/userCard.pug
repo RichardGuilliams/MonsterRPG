@@ -1,0 +1,7 @@
+mixin userCard(user)
+    .userCard
+        img(src=`/img/users/${user.photo}`)
+        h2.buildingHeader= user.name
+        p= user.email
+        p= user.role
+

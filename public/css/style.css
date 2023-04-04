@@ -47,6 +47,10 @@ span{
     padding: var(--spacing-small);
 }
 
+section{
+    margin-right: 4rem;
+}
+
 label{
     font-size: var(--small-font);
     padding: var(--spacing-small);
@@ -58,6 +62,14 @@ button{
 }
 
 input{
+    font-size: var(--small-font);
+}
+
+select{
+    font-size: var(--small-font);
+}
+
+option{
     font-size: var(--small-font);
 }
 
@@ -151,6 +163,20 @@ form{
 
 .login-form{
     margin: 3rem;
+}
+
+.card{
+    margin: 4rem;
+    padding: 4rem;
+    background-color: var(--primary-color)
+}
+
+.card > div{
+    margin: 2rem;
+}
+
+.card__group--section{
+    display: flex;
 }
 
 .footer{

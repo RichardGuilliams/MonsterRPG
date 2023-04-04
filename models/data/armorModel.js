@@ -7,7 +7,7 @@ const armorSchema = new mongoose.Schema(
             unique: [true, 'An armors name must be unique'],
             required: [true, 'An armor must have a name']
         },
-        imgUrl: {
+        photo: {
             type: String,
             required: [true, 'An armor must have an image']
         },

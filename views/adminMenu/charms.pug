@@ -1,0 +1,11 @@
+extends ../base
+
+include .././mixins/charmCard
+
+block content    
+    main.main 
+        .main__container 
+            h3 Charms
+            each charm in charms
+                +charmCard(charm)
+

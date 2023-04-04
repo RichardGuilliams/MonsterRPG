@@ -8,7 +8,7 @@ const collarSchema = new mongoose.Schema(
             unique: [true, 'a collars name must be unique'],
             required: [true, 'An collar must have a name']
         },
-        imgUrl: {
+        photo: {
             type: String,
             required: [true, 'An collar must have an image']
         },

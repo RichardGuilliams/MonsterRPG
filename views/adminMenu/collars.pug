@@ -1,0 +1,11 @@
+extends ../base
+
+include .././mixins/collarCard
+
+block content    
+    main.main 
+        .main__container 
+            h3 Collars
+            each collar in collars
+                +collarCard(collar)
+

@@ -1,19 +1,35 @@
 /* eslint-disable */
+import { io } from 'socket.io-client';
 import '@babel/polyfill';
 import { showAlert } from './alerts';
 import { displayMap } from './mapBox';
 import { login, logout } from './login';
 import { signup } from './signup';
 import { updateSettings } from './updateSettings';
+import { create } from './create';
+
+// forms
+import { loginForm } from './forms/loginForm'
+import { settingsForm } from './forms/settingsForm'
+import { monsterForm } from './forms/monsterForm'
+import { signupForm } from './forms/signupForm'
+import { passwordForm } from './forms/passwordForm'
 
 // DOM ELEMENTS
 const mapBox = document.getElementById('map');
-const loginForm = document.querySelector('.form--login');
-const settingsForm = document.querySelector('.form-user-data');
-const passwordForm = document.querySelector('.form-user-settings');
-const signupForm = document.querySelector('.form--signup');
 const logoutBtn = document.querySelector('.nav__el--logout');
-const bookBtn = document.getElementById('book-tour');
+
+
+const socket = io('http://localhost:3000');
+
+socket.on('connect', () => {
+    showAlert('success', "You have connected to the server", 20)
+})
+
+socket.on('receive-connect', (event) => {
+    console.log(event)
+    showAlert('success', `${event.socket.id}`, 20)
+})
 
 // DELEGATE EVENTS
 if(mapBox){
@@ -21,71 +37,11 @@ if(mapBox){
     displayMap(locations);
 }
 
-if(loginForm){
-    loginForm.addEventListener('submit', e => {
-        e.preventDefault();
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
-        console.log(email, password);
-        login(email, password);
-    });
-}
-
-if(signupForm){
-    console.log('hi')
-    signupForm.addEventListener('submit', e => {
-        e.preventDefault();
-        const name = document.getElementById('signup-name').value;
-        const email = document.getElementById('signup-email').value;
-        const password = document.getElementById('signup-password').value;
-        const passwordConfirm = document.getElementById('signup-password-confirm').value;
-        signup(name, email, password, passwordConfirm);
-
-        name = document.getElementById('signup-name').value = '';
-        email = document.getElementById('signup-email').value = '';
-        password = document.getElementById('signup-password').value = '';
-        passwordConfirm = document.getElementById('signup-password-confirm').value = '';
-    });
-}
-
-if(settingsForm){
-    settingsForm.addEventListener('submit', e => {
-        e.preventDefault();
-        const form = new FormData();
-        form.append('name', document.getElementById('name').value);
-        form.append('email', document.getElementById('email').value);
-        form.append('photo', document.getElementById('photo').files[0]);
-        console.log(form)
-        
-        updateSettings(form, 'data');
-    });
-}
-
-if(passwordForm){
-    passwordForm.addEventListener('submit', async e => {
-        e.preventDefault();
-        document.querySelector('.btn--save-password').innerHTML = 'Updating...'
-
-        const passwordCurrent = document.getElementById('password-current').value;
-        const password = document.getElementById('password').value;
-        const passwordConfirm = document.getElementById('password-confirm').value;
-        await updateSettings({passwordCurrent, password, passwordConfirm}, 'password');
-
-        document.querySelector('.btn--save-password').innerHTML = 'Saved Password'
-
-        passwordCurrent = document.getElementById('password-current').value = '';
-        password = document.getElementById('password').value = '';
-        passwordConfirm = document.getElementById('password-confirm').value = '';
-    });
-}
-
-if(bookBtn){
-    bookBtn.addEventListener('click', e => {
-        e.target.textContent = `Processing...`;
-        const tourId = e.target.dataset.tourId;
-        bookTour(tourId);
-    });
-}
+loginForm(login);
+signupForm(signup);
+settingsForm(updateSettings)
+passwordForm(updateSettings)
+monsterForm(create);
 
 if(logoutBtn) logoutBtn.addEventListener('click', logout);
 

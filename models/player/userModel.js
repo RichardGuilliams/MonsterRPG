@@ -40,7 +40,7 @@ const userSchema = new mongoose.Schema(
             validator: function(el) {
                 return el === this.password;
             },
-            message: 'Password and passworn confirm do not match'
+            message: 'Password and password confirm do not match'
         }
     },
     passwordChangedAt: Date,
