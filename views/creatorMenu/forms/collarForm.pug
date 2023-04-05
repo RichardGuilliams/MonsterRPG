@@ -1,0 +1,23 @@
+extends ../../base
+
+include ../../mixins/forms/input
+
+block content    
+    main.main
+        .collar-form
+            a(href='/collars') Back To Collars
+            h2.heading-secondary.ma-bt-lg Create Collar
+            form.form.form--collar(action='/submit-collar-data' method="POST")
+                .form__group
+                    +formInput('Name', 'text', 'collar-name', 'New collar', true)
+                    
+                .form__group
+                    +formInput('Description', 'text', 'collar-desc', 'collar Description', true)
+
+                .form__group.form__photo-upload
+                    label.form__label(for='collar-photo') Choose Photo
+                    input.form__upload(type='file', accept='image/*', id='collar-photo', name='collar-photo')
+
+                .form__group
+                    button.btn.btn--green Create Collar
+

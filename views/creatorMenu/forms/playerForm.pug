@@ -1,0 +1,23 @@
+extends ../../base
+
+include ../../mixins/forms/input
+
+block content    
+    main.main
+        .player-form
+            a(href='/players') Back To players
+            h2.heading-secondary.ma-bt-lg Create player
+            form.form.form--player(action='/submit-player-data' method="POST")
+                .form__group
+                    +formInput('Name', 'text', 'player-name', 'New player', true)
+                    
+                .form__group
+                    +formInput('Description', 'text', 'player-desc', 'player Description', true)
+
+                .form__group.form__photo-upload
+                    label.form__label(for='player-photo') Choose Photo
+                    input.form__upload(type='file', accept='image/*', id='player-photo', name='player-photo')
+
+                .form__group
+                    button.btn.btn--green Create player
+

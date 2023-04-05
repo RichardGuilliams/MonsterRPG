@@ -1,12 +1,12 @@
 extends ../base
 
-include .././mixins/itemCard
+include .././mixins/cards/itemCard
 
 block content    
     main.main
         a(href=`/createItem`) Create New Item
         .main__container 
             h3 Items
-            each item in objects
+            each item in data.objects[0]
                 +itemCard(item)
 

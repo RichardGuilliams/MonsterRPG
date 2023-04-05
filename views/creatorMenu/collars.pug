@@ -1,12 +1,12 @@
 extends ../base
 
-include .././mixins/collarCard
+include .././mixins/cards/collarCard
 
 block content    
     main.main 
         a(href=`/createCollar`) Create New Collar
         .main__container 
             h3 Collars
-            each collar in objects
+            each collar in data.objects[0]
                 +collarCard(collar)
 

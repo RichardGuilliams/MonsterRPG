@@ -1,0 +1,23 @@
+extends ../../base
+
+include ../../mixins/forms/input
+
+block content    
+    main.main
+        .building-form
+            a(href='/buildings') Back To buildings
+            h2.heading-secondary.ma-bt-lg Create building
+            form.form.form--building(action='/submit-building-data' method="POST")
+                .form__group
+                    +formInput('Name', 'text', 'building-name', 'New building', true)
+                    
+                .form__group
+                    +formInput('Description', 'text', 'building-desc', 'building Description', true)
+
+                .form__group.form__photo-upload
+                    label.form__label(for='building-photo') Choose Photo
+                    input.form__upload(type='file', accept='image/*', id='building-photo', name='building-photo')
+
+                .form__group
+                    button.btn.btn--green Create building
+

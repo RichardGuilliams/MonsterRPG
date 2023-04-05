@@ -1,12 +1,12 @@
 extends ../base
 
-include .././mixins/buildingCard
+include .././mixins/cards/buildingCard
 
 block content    
     main.main 
         a(href=`/createBuilding`) Create New Building
         .main__container 
             h3 Buildings
-            each building in objects
+            each building in data.objects[0]
                 +buildingCard(building)
 

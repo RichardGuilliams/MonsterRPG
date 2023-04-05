@@ -1,12 +1,13 @@
 /* eslint-disable */
 import { io } from 'socket.io-client';
 import '@babel/polyfill';
-import { showAlert } from './alerts';
-import { displayMap } from './mapBox';
-import { login, logout } from './login';
-import { signup } from './signup';
-import { updateSettings } from './updateSettings';
-import { create } from './create';
+
+import { showAlert } from './actions/alerts';
+import { displayMap } from './actions/mapBox';
+import { login, logout } from './actions/login';
+import { signup } from './actions/signup';
+import { updateSettings } from './actions/updateSettings';
+import { create } from './actions/create';
 
 // forms
 import { loginForm } from './forms/loginForm'

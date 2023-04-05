@@ -1,12 +1,12 @@
 extends ../base
 
-include .././mixins/weaponCard
+include .././mixins/cards/weaponCard
 
 block content    
     main.main 
         a(href=`/createWeapon`) Create New Weapon
         .main__container 
             h3 Weapons
-            each weapon in objects
+            each weapon in data.objects[0]
                 +weaponCard(weapon)
 

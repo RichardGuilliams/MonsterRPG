@@ -1,12 +1,12 @@
 extends ../base
 
-include .././mixins/armorCard
+include .././mixins/cards/armorCard
 
 block content    
     main.main 
         a(href=`/createArmor`) Create New Armor
         .main__container 
             h3 Armors
-            each armor in objects
+            each armor in data.objects[0]
                 +armorCard(armor)
 

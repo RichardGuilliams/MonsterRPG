@@ -1,0 +1,23 @@
+extends ../../base
+
+include ../../mixins/forms/input
+
+block content    
+    main.main
+        .alliance-form
+            a(href='/alliances') Back To alliances
+            h2.heading-secondary.ma-bt-lg Create alliance
+            form.form.form--alliance(action='/submit-alliance-data' method="POST")
+                .form__group
+                    +formInput('Name', 'text', 'alliance-name', 'New alliance', true)
+                    
+                .form__group
+                    +formInput('Description', 'text', 'alliance-desc', 'alliance Description', true)
+
+                .form__group.form__photo-upload
+                    label.form__label(for='alliance-photo') Choose Photo
+                    input.form__upload(type='file', accept='image/*', id='alliance-photo', name='alliance-photo')
+
+                .form__group
+                    button.btn.btn--green Create alliance
+

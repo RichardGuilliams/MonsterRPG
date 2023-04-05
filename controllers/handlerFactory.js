@@ -87,14 +87,36 @@ exports.getAll = Model =>
         data: doc
       }
     });
-  });
+});
 
-  exports.getView = (Model, path, title) =>
-  catchAsync(async (req, res, next) => {
-    const objects = await Model.find();
+exports.getView = (Model, path, title) =>
+catchAsync(async (req, res, next) => {
+  const objects = await Model.find();
 
-    res.status(200).render(`${path}`, {
-      title: `${title}`,
-      objects
-    });
+  res.status(200).render(`${path}`, {
+    title: `${title}`,
+    objects
   });
+});
+
+exports.getView = (path, title, ...data) =>
+catchAsync(async (req, res, next) => {
+  let objects = [];
+  if(data.length > 0) {
+    await Promise.all(
+      data.map( async Model => {
+        let model = await Model.find();
+        objects.push(model);
+      })
+    )
+  }
+
+  console.log(objects)
+
+  res.status(200).render(`${path}`, {
+    title: `${title}`,
+    data: {
+      objects: objects.length > 0 ? objects : undefined      
+    }
+  });
+});

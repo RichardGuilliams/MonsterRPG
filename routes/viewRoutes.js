@@ -94,11 +94,67 @@ router.get(
 );
 
 router.get(
-    "/createMove",
-    authController.protect,
-    authController.restrictTo("admin"),
-    viewController.getMoveForm
-  );
+  "/createMove",
+  authController.protect,
+  authController.restrictTo("admin"),
+  viewController.getMoveForm
+);
+
+router.get(
+  "/createAlliance",
+  authController.protect,
+  authController.restrictTo("admin"),
+  viewController.getAllianceForm
+);
+
+router.get(
+  "/createBuilding",
+  authController.protect,
+  authController.restrictTo("admin"),
+  viewController.getBuildingForm
+);
+
+router.get(
+  "/createArmor",
+  authController.protect,
+  authController.restrictTo("admin"),
+  viewController.getArmorForm
+);
+
+router.get(
+  "/createWeapon",
+  authController.protect,
+  authController.restrictTo("admin"),
+  viewController.getWeaponForm
+);
+
+router.get(
+  "/createItem",
+  authController.protect,
+  authController.restrictTo("admin"),
+  viewController.getItemForm
+);
+
+router.get(
+  "/createCharm",
+  authController.protect,
+  authController.restrictTo("admin"),
+  viewController.getCharmForm
+);
+
+router.get(
+  "/createCollar",
+  authController.protect,
+  authController.restrictTo("admin"),
+  viewController.getCollarForm
+);
+
+router.get(
+  "/createLocation",
+  authController.protect,
+  authController.restrictTo("admin"),
+  viewController.getLocationForm
+);
 
 router.get("/shop", authController.protect, viewController.getShop);
 

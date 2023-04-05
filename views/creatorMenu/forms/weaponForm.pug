@@ -1,0 +1,23 @@
+extends ../../base
+
+include ../../mixins/forms/input
+
+block content    
+    main.main
+        .weapon-form
+            a(href='/weapons') Back To Weapons
+            h2.heading-secondary.ma-bt-lg Create Weapon
+            form.form.form--weapon(action='/submit-weapon-data' method="POST")
+                .form__group
+                    +formInput('Name', 'text', 'weapon-name', 'New weapon', true)
+                    
+                .form__group
+                    +formInput('Description', 'text', 'weapon-desc', 'weapon Description', true)
+
+                .form__group.form__photo-upload
+                    label.form__label(for='weapon-photo') Choose Photo
+                    input.form__upload(type='file', accept='image/*', id='weapon-photo', name='weapon-photo')
+
+                .form__group
+                    button.btn.btn--green Create Weapon
+

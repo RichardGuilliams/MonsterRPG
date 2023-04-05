@@ -1,0 +1,12 @@
+extends ../base
+
+include .././mixins/cards/locationCard
+
+block content    
+    main.main
+        a(href=`/createLocation`) Create New location
+        .main__container 
+            h3 locations
+            each location in data.objects[0]
+                +locationCard(location)
+

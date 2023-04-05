@@ -1,0 +1,23 @@
+extends ../../base
+
+include ../../mixins/forms/input
+
+block content    
+    main.main
+        .armor-form
+            a(href='/armors') Back To Armors
+            h2.heading-secondary.ma-bt-lg Create Armor
+            form.form.form--armor(action='/submit-armor-data' method="POST")
+                .form__group
+                    +formInput('Name', 'text', 'armor-name', 'New armor', true)
+                    
+                .form__group
+                    +formInput('Description', 'text', 'armor-desc', 'armor Description', true)
+
+                .form__group.form__photo-upload
+                    label.form__label(for='armor-photo') Choose Photo
+                    input.form__upload(type='file', accept='image/*', id='armor-photo', name='armor-photo')
+
+                .form__group
+                    button.btn.btn--green Create Armor
+

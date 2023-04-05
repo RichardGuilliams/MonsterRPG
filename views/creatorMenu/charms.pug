@@ -1,12 +1,12 @@
 extends ../base
 
-include .././mixins/charmCard
+include .././mixins/cards/charmCard
 
 block content    
     main.main 
         a(href=`/createCharm`) Create New Charm
         .main__container 
             h3 Charms
-            each charm in objects
+            each charm in data.objects[0]
                 +charmCard(charm)
 

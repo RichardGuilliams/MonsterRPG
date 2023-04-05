@@ -1,12 +1,12 @@
 extends ../base
 
-include .././mixins/playerCard
+include .././mixins/cards/playerCard
 
 block content    
     main.main 
         a(href=`/createPlayer`) Create New Player
         .main__container 
             h3 Players
-            each Player in objects
+            each Player in data.objects[0]
                 +playerCard(player)
 

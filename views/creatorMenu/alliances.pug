@@ -1,12 +1,12 @@
 extends ../base
 
-include .././mixins/allianceCard
+include .././mixins/cards/allianceCard
 
 block content    
     main.main 
         a(href=`/createAlliance`) Create New Alliance
         .main__container 
             h3 Alliances
-            each alliance in objects
+            each alliance in data.objects[0]
                 +allianceCard(alliance)
 

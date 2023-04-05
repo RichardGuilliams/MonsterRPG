@@ -1,0 +1,23 @@
+extends ../../base
+
+include ../../mixins/forms/input
+
+block content    
+    main.main
+        .item-form
+            a(href='/items') Back To Items
+            h2.heading-secondary.ma-bt-lg Create Item
+            form.form.form--item(action='/submit-item-data' method="POST")
+                .form__group
+                    +formInput('Name', 'text', 'item-name', 'New item', true)
+                    
+                .form__group
+                    +formInput('Description', 'text', 'item-desc', 'item Description', true)
+
+                .form__group.form__photo-upload
+                    label.form__label(for='item-photo') Choose Photo
+                    input.form__upload(type='file', accept='image/*', id='item-photo', name='item-photo')
+
+                .form__group
+                    button.btn.btn--green Create Item
+

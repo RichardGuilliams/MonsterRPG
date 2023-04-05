@@ -1,0 +1,23 @@
+extends ../../base
+
+include ../../mixins/forms/input
+
+block content    
+    main.main
+        .location-form
+            a(href='/locations') Back To locations
+            h2.heading-secondary.ma-bt-lg Create location
+            form.form.form--location(action='/submit-location-data' method="POST")
+                .form__group
+                    +formInput('Name', 'text', 'location-name', 'New location', true)
+                    
+                .form__group
+                    +formInput('Description', 'text', 'location-desc', 'location Description', true)
+
+                .form__group.form__photo-upload
+                    label.form__label(for='location-photo') Choose Photo
+                    input.form__upload(type='file', accept='image/*', id='location-photo', name='location-photo')
+
+                .form__group
+                    button.btn.btn--green Create location
+

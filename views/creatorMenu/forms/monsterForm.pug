@@ -44,6 +44,7 @@ block content
                     +formInput('LUK', 'number', 'monster-luk', 0, true)
                     
                 .form__group
+                    - const monsters = data.objects[0]
                     - monsters.splice(0, 0, {name: 'None'}) 
                     p Fusion Monsters: 
                     +formSelect('Monster 1', 'monster-fusion1', true, monsters.map(el => { return el.name }))
@@ -51,12 +52,7 @@ block content
                     +formSelect('Monster 3', 'monster-fusion3', true, monsters.map(el => { return el.name }))
                     +formSelect('Monster 4', 'monster-fusion4', true, monsters.map(el => { return el.name }))
                     +formSelect('Monster 5', 'monster-fusion5', true, monsters.map(el => { return el.name }))
-
-                //- .form__group
-                    //- p Attributes:
-                        //- +formSelect('Type 1', 'monster-tamer-type1', 'true', ['None', 'Fire', 'Water', 'Earth', 'Air', 'Light', 'Dark', 'Poison'])
-
-                        
+                
                 .form__group.form__photo-upload
                     label.form__label(for='monster-photo') Choose Photo
                     input.form__upload(type='file', accept='image/*', id='monster-photo', name='monster-photo')

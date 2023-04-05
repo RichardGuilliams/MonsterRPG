@@ -13,7 +13,6 @@ const Armor = require('../models/data/armorModel');
 const Item = require('../models/data/itemModel');
 const Move = require('../models/data/moveModel');
 
-
 exports.alerts = (req, res, next) => {
   const { alert } = req.query;
   if (alert === 'payment')
@@ -21,77 +20,6 @@ exports.alerts = (req, res, next) => {
   "Your payment was successful! Please check your email for a confirmation.";
   next();
 };
-
-exports.getOverview = catchAsync(async (req, res, next) => {
-  res.status(200).render('overview', {
-    title: 'Overview',
-    data: {
-      enemy: {name: 'bat'},
-      player: {name: 'player'}
-    }
-  });
-});
-
-exports.getMonsterForm = async(req, res, next) => {
-  const monsters = await Monster.find();
-  res.status(200).render('adminMenu/forms/monsterForm', {
-    title: 'Create A New Monster',
-    monsters
-  });
-};
-
-exports.getMoveForm = async(req, res, next) => {
-  const moves = await Move.find();
-  res.status(200).render('adminMenu/forms/moveForm', {
-    title: 'Create A New Move',
-    moves
-  });
-};
-
-exports.getLoginForm = (req, res) => {
-  res.status(200).render('authentication/login', {
-    title: 'Log into your account'
-  });
-};
-
-exports.getSignupForm = (req, res) => {
-  res.status(200).render('authentication/signup', {
-    title: 'Create an account'
-  });
-};
-
-exports.getAccount = (req, res) => {
-  res.status(200).render('playerMenu/account', {
-    title: 'Your account'
-  });
-};
-
-
-exports.getShop = (req, res) => {
-  res.status(200).render('playerMenu/shop', {
-    title: 'Shop'
-  });
-};
-
-exports.getBuilding = (req, res) => {
-  res.status(200).render('playerMenu/building', {
-    title: 'Building'
-  });
-};
-
-exports.getMonsterFusion = (req, res) => {
-  res.status(200).render('playerMenu/monsterFusion', {
-    title: 'Monster Fusion'
-  });
-};
-
-
-exports.getBattle = (req, res) => {
-  res.status(200).render('playerMenu/battle', {
-    title: 'Battle'
-  });
-};
-
 
 
 exports.updateUserData = catchAsync(async (req, res, next) => {
@@ -105,22 +33,43 @@ exports.updateUserData = catchAsync(async (req, res, next) => {
       new: true,
       runValidators: true
     }
-    );
+  );
     
-    res.status(200).render('account', {
-      title: 'Your account',
-      user: updatedUser
+  res.status(200).render('account', {
+    title: 'Your account',
+    user: updatedUser
   });
-});
+})
+  
+exports.getLoginForm = factory.getView('authentication/login', 'Log Into Your Account');
+exports.getSignupForm = factory.getView('authentication/signup', 'Create An Account');
 
-exports.getMonsters = factory.getView(Monster, 'adminMenu/monsters', 'Monsters');
-exports.getMoves = factory.getView(Move, 'adminMenu/moves', 'Moves');
-exports.getWeapons = factory.getView(Weapon, 'adminMenu/weapons', 'weapons');
-exports.getArmors = factory.getView(Armor, 'adminMenu/armors', 'Armors');
-exports.getItems = factory.getView(Item, 'adminMenu/items', 'Items');
-exports.getCharms = factory.getView(Charm, 'adminMenu/charms', 'Charms');
-exports.getCollars = factory.getView(Collar, 'adminMenu/collars', 'Collars');
-exports.getLocations = factory.getView(Location, 'adminMenu/locations', 'Locations');
-exports.getUsers = factory.getView(User, 'adminMenu/users', 'Users');
-exports.getBuildings = factory.getView(Building, 'adminMenu/buildings', 'Buildings');
-exports.getAlliances = factory.getView(Alliance, 'adminMenu/alliances', 'Alliances');
+exports.getOverview = factory.getView('overview', 'Overview');
+exports.getShop = factory.getView('playerMenu/shop', 'Shop');
+exports.getBuilding = factory.getView('playerMenu/building', 'Building');
+exports.getMonsterFusion = factory.getView('playerMenu/monsterFusion', 'MonsterFusion');
+exports.getBattle = factory.getView('playerMenu/battle', 'Battle');
+  
+exports.getWeaponForm = factory.getView('creatorMenu/forms/weaponForm', 'Create A New Weapon', Weapon);
+exports.getArmorForm = factory.getView('creatorMenu/forms/armorForm', 'Create A New Armor', Armor);
+exports.getItemForm = factory.getView('creatorMenu/forms/itemForm', 'Create A New Item', Item);  
+exports.getMonsterForm = factory.getView('creatorMenu/forms/monsterForm', 'Create A New Monster', Monster);
+exports.getCollarForm = factory.getView('creatorMenu/forms/collarForm', 'Create A New Collar', Collar);
+exports.getCharmForm = factory.getView('creatorMenu/forms/CharmForm', 'Create A New Charm', Charm);
+exports.getBuildingForm = factory.getView('creatorMenu/forms/buildingForm', 'Create A New Building', Building);
+exports.getAllianceForm = factory.getView('creatorMenu/forms/allianceForm', 'Create A New Alliance', Alliance);
+exports.getLocationForm = factory.getView('creatorMenu/forms/locationForm', 'Create A New Location', Location);
+exports.getMoveForm = factory.getView('creatorMenu/forms/moveForm', 'Create A New Move');
+exports.getAccount = factory.getView('playerMenu/account', 'Your Account');
+
+exports.getMonsters = factory.getView('creatorMenu/monsters', 'Monsters', Monster);
+exports.getMoves = factory.getView('creatorMenu/moves', 'Moves', Move);
+exports.getWeapons = factory.getView('creatorMenu/weapons', 'weapons', Weapon);
+exports.getArmors = factory.getView('creatorMenu/armors', 'Armors', Armor);
+exports.getItems = factory.getView('creatorMenu/items', 'Items', Item);
+exports.getCharms = factory.getView('creatorMenu/charms', 'Charms', Charm);
+exports.getCollars = factory.getView('creatorMenu/collars', 'Collars', Collar);
+exports.getLocations = factory.getView('creatorMenu/locations', 'Locations', Location);
+exports.getUsers = factory.getView('creatorMenu/users', 'Users', User);
+exports.getBuildings = factory.getView('creatorMenu/buildings', 'Buildings', Building);
+exports.getAlliances = factory.getView('creatorMenu/alliances', 'Alliances', Alliance);
