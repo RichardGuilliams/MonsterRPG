@@ -3,6 +3,7 @@ extends ../../base
 include ../../mixins/forms/input
 
 block content    
+    include ../../inclusions/_gameVars
     main.main
         .location-form
             a(href='/locations') Back To locations
@@ -10,9 +11,12 @@ block content
             form.form.form--location(action='/submit-location-data' method="POST")
                 .form__group
                     +formInput('Name', 'text', 'location-name', 'New location', true)
-                    
+
                 .form__group
                     +formInput('Description', 'text', 'location-desc', 'location Description', true)
+
+                .form__group
+                    +formInput('Min Level', 'number', 'location-min-level', 1, true)
 
                 .form__group.form__photo-upload
                     label.form__label(for='location-photo') Choose Photo

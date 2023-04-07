@@ -3,6 +3,7 @@ extends ../../base
 include ../../mixins/forms/input
 
 block content    
+    include ../../inclusions/_gameVars
     main.main
         .alliance-form
             a(href='/alliances') Back To alliances
@@ -13,6 +14,14 @@ block content
                     
                 .form__group
                     +formInput('Description', 'text', 'alliance-desc', 'alliance Description', true)
+
+                .form__group 
+                    +formInput('Minimum Level', 'number', 'alliance-min-level', 5, true)
+
+                .form__group
+                    +formTextArea('Recruiting Banner', 'text', 'alliance-recruiting-banner', 'Recruitment Banner', true)
+
+
 
                 .form__group.form__photo-upload
                     label.form__label(for='alliance-photo') Choose Photo

@@ -3,6 +3,7 @@ extends ../../base
 include ../../mixins/forms/input
 
 block content    
+    include ../../inclusions/_gameVars
     main.main
         .armor-form
             a(href='/armors') Back To Armors
@@ -14,10 +15,33 @@ block content
                 .form__group
                     +formInput('Description', 'text', 'armor-desc', 'armor Description', true)
 
+                .form__group 
+                    p Rank:
+                    +formSelect('Attribute 1', 'armor-rank', true, ranks)
+
+                .form__group 
+                    p Type:
+                    +formSelect('Type', 'armor-type', true, armorTypes)
+                    
+                .form__group 
+                    p Attributes:
+                    +formSelect('Attribute 1', 'armor-attribute1', true, attributes)
+                    +formSelect('Attribute 2', 'armor-attribute2', true, attributes)
+
+                .form__group 
+                    p Effect:
+                    +formSelect('Attribute 1', 'armor-effect', true, effects)
+
+                .form__group 
+                    p Stat Bonuses:
+                    - let statAlias = stats.splice(1, stats.length - 1)
+                    each stat in statAlias
+                        label.form__label(for=`armor-stat--${stat.toLowerCase()}`)= `${stat}:` 
+                        input(type="number", value="0", id=`armor-stat--${stat.toLowerCase()}`) 
+
                 .form__group.form__photo-upload
                     label.form__label(for='armor-photo') Choose Photo
                     input.form__upload(type='file', accept='image/*', id='armor-photo', name='armor-photo')
 
                 .form__group
                     button.btn.btn--green Create Armor
-

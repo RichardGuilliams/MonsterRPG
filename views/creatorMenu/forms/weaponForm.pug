@@ -3,6 +3,7 @@ extends ../../base
 include ../../mixins/forms/input
 
 block content    
+    include ../../inclusions/_gameVars
     main.main
         .weapon-form
             a(href='/weapons') Back To Weapons
@@ -12,7 +13,32 @@ block content
                     +formInput('Name', 'text', 'weapon-name', 'New weapon', true)
                     
                 .form__group
-                    +formInput('Description', 'text', 'weapon-desc', 'weapon Description', true)
+                    +formInput('Description', 'text', 'weapon-desc', 'Weapon Description', true)
+
+                .form__group 
+                    p Rank:
+                    +formSelect('Attribute 1', 'weapon-rank', true, ranks)
+
+                .form__group 
+                    p Type:
+                    +formSelect('Type', 'weapon-type', true, 
+                    weaponTypes)
+
+                .form__group 
+                    p Attributes:
+                    +formSelect('Attribute 1', 'weapon-attribute1', true, attributes)
+                    +formSelect('Attribute 2', 'weapon-attribute2', true, attributes)
+
+                .form__group 
+                    p Effect:
+                    +formSelect('Attribute 1', 'weapon-effect', true, effects)
+
+                .form__group 
+                    p Stat Bonuses:
+                    - let statAlias = stats.splice(1, stats.length - 1)
+                    each stat in statAlias
+                        label.form__label(for=`weapon-stat--${stat.toLowerCase()}`)= `${stat}:` 
+                        input(type="number", value="0", id=`weapon-stat--${stat.toLowerCase()}`) 
 
                 .form__group.form__photo-upload
                     label.form__label(for='weapon-photo') Choose Photo

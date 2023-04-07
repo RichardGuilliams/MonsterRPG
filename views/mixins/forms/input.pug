@@ -4,6 +4,12 @@ mixin formInput(label, type, id, value, required)
         input.form__input(id=`${id}`, value=`${type == 'number' ? value : ''}`, name=`${id}`, 
             placeholder=`${type == 'text' ? value : ''}` type=`${type}`, required=`${required}`)
 
+mixin formTextArea(label, type, id, value, required)
+    .group
+        label.form__label(for=`${id}`) #{label}:
+        textarea.form__input(width=`${width}`, height=`${height}`, id=`${id}`, value=`${type == 'number' ? value : ''}`, name=`${id}`, 
+            placeholder=`${type == 'text' ? value : ''}` type=`${type}`, required=`${required}`)
+
 mixin addOption(name)
     option(value=`${name}`) #{name}
 

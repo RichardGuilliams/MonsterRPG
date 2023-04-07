@@ -3,6 +3,7 @@ extends ../../base
 include ../../mixins/forms/input
 
 block content    
+    include ../../inclusions/_gameVars
     main.main
         .monster-form
             a(href='/monsters') Back To Monsters
@@ -15,21 +16,21 @@ block content
 
                 .form__group
                     p Tamer Types:
-                    +formSelect('Type 1', 'monster-tamer-type1', true, ['Beastmaster', 'Geomancer', 'Rogue', 'Mage', 'Psychic'])
-                    +formSelect('Type 2', 'monster-tamer-type2', true, ['None', 'Beastmaster', 'Geomancer', 'Rogue', 'Mage', 'Psychic'])
+                    +formSelect('Type 1', 'monster-tamer-type1', true, tamerTypes)
+                    +formSelect('Type 2', 'monster-tamer-type2', true, tamerTypes)
                 
                 .form__group
-                    +formSelect('Rank', 'monster-rank', true, ['Pawn', 'Knight', 'Champion', 'Master'])
+                    +formSelect('Rank', 'monster-rank', true, ranks)
 
                 .form__group
                     p Monster Types:
-                    +formSelect('Type 1', 'monster-type1', true, ['Beast', 'Elemental', 'Avian', 'Amphian', 'Serpent', 'Brood', 'Divine', 'Daemon', 'Necro', 'Plant'])
-                    +formSelect('Type 2', 'monster-type2', true, ['None', 'Beast', 'Elemental', 'Avian', 'Amphian', 'Serpent', 'Brood', 'Divine', 'Daemon', 'Necro', 'Plant']) 
+                    +formSelect('Type 1', 'monster-type1', true, monsterTypes)
+                    +formSelect('Type 2', 'monster-type2', true, monsterTypes) 
 
                 .form__group
                     p Monster Attributes:
-                    +formSelect('Attribute 1', 'monster-attribute1', true, ['Fire', 'Water', 'Ice', 'Electric', 'Air', 'Light', 'Dark', 'Earth', 'Poison', 'Physical'])
-                    +formSelect('Attribute 2', 'monster-attribute2', true, ['None', 'Fire', 'Water', 'Ice', 'Electric', 'Air', 'Light', 'Dark', 'Earth', 'Poison', 'Physical'])                  
+                    +formSelect('Attribute 1', 'monster-attribute1', true, attributes)
+                    +formSelect('Attribute 2', 'monster-attribute2', true, attributes)                  
 
                 .form__group
                     p Stats

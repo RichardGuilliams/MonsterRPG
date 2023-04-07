@@ -4,6 +4,7 @@ include ../../mixins/forms/input
 
 block content    
     main.main
+        include ../../inclusions/_gameVars
         .charm-form
             a(href='/charms') Back To Charms
             h2.heading-secondary.ma-bt-lg Create Charm
@@ -13,6 +14,21 @@ block content
                     
                 .form__group
                     +formInput('Description', 'text', 'charm-desc', 'charm Description', true)
+
+                .form__group
+                    +formSelect('Rank', 'text', 'charm-rank', ranks)
+
+                .form__group 
+                    p Stat Bonuses:
+                    - let statAlias = stats.splice(1, stats.length - 1)
+                    each stat in statAlias
+                        label.form__label(for=`weapon-stat--${stat.toLowerCase()}`)= `${stat}:` 
+                        input(type="number", value="0", id=`weapon-stat--${stat.toLowerCase()}`)
+
+                .form__group 
+                    p Attributes:
+                    +formSelect('Attribute 1', 'charm-attribute1', true, attributes)
+                    +formSelect('Attribute 2', 'charm-attribute2', true, attributes)
 
                 .form__group.form__photo-upload
                     label.form__label(for='charm-photo') Choose Photo
