@@ -1,20 +1,36 @@
 mixin formInput(label, type, id, value, required)
     .group
-        label.form__label(for=`${id}`) #{label}:
+        label.form__label(for=`${id}`) #{label}
         input.form__input(id=`${id}`, value=`${type == 'number' ? value : ''}`, name=`${id}`, 
             placeholder=`${type == 'text' ? value : ''}` type=`${type}`, required=`${required}`)
 
 mixin formTextArea(label, type, id, value, required)
     .group
-        label.form__label(for=`${id}`) #{label}:
+        label.form__label(for=`${id}`) #{label}
         textarea.form__input(width=`${width}`, height=`${height}`, id=`${id}`, value=`${type == 'number' ? value : ''}`, name=`${id}`, 
             placeholder=`${type == 'text' ? value : ''}` type=`${type}`, required=`${required}`)
 
 mixin addOption(name)
     option(value=`${name}`) #{name}
 
-mixin formSelect(label, id, required, options, dataId)
-    label.form__label(for=`${id}`) #{label}:
+//- mixin formTable(data, length)
+//-     table
+//-         tr
+//-             each rowHeader in data.h 
+//-                 th= rowHeader
+        
+//-         - for (let i = 0; i < length; i++){
+//-             tr  
+//-                 each obj in data.rd
+//-                     td
+//-                        +formSelect(``, `${data.id}-data--name-${obj.name}`, false, data.rd[0].map(el => { return el.name }))
+//-                     td
+//-                         +formInput(``,`number`, `${data.id}-data--rarity-${obj.name}`, 0, false)      
+//-         -}
+
+mixin formSelect(label, id, required, options)
+    if (label != '')
+        label.form__label(for=`${id}`) #{label}
     select.form__input(id=`${id}`, value=`${id}` name=`${id}` type=`${type}` required=`${required}`)
         each option in options 
             +addOption(option)

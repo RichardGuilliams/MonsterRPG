@@ -1,6 +1,8 @@
 const express = require("express");
 const buildingController = require("../../controllers/data/buildingController");
 const authController = require("../../controllers/authController");
+const photoController = require("../../controllers/photoController");
+
 
 const router = express.Router();
 
@@ -9,7 +11,10 @@ router.use(authController.protect);
 router
   .route(`/`)
   .get(buildingController.getAllBuildings)
-  .post(authController.restrictTo("admin"), buildingController.createBuilding);
+  .post(authController.restrictTo("admin"),
+    photoController.uploadPhoto,
+    photoController.resizePhoto("building"),
+    buildingController.createBuilding);
 
 router
   .route(`/:id`)

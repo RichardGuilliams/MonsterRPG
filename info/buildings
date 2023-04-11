@@ -1,0 +1,21 @@
+Buildings will be able to do a variety of actions such as periodically generating resources, crafting, breeding and fusions. 
+Some will serve as a gate between players to allow trading, buying and selling of goods and monsters.
+Most buildings will have some kind of dungeon that may even change based on which monster is assigned as the leader.
+EX: The mine will primarily act as a cave with average cave monsters in each level, however, if a demon is the leader of the mine, the 
+cave will instead be a pit of the underworld and various daemons will be found. As well, a giant spider or Arachne as the leader will turn the 
+cave into a spider nest. Converting all monsters into various types of spiders.
+
+As well, the production of buildings can change based on the leader as well
+ex: a mine will primarily produce metal and stone, however with a mystic golem assigned as the leader, the mine will begin producing
+enchanted gems along with its regular query.
+
+Building types will have to vary based on the actions it is capable of
+
+Production buildings will produce goods. Examples are Farms and Mines
+
+Merchant Buildings allow the buying and selling of goods and monsters.
+examples are The Market, The Auction House and the Monster Trader count as Merchant Buildings
+
+Battle buildings allow players to compete either againt npcs or other players. Examples include The Arena, The Tower Of Champions, and the
+labyrinth.
+

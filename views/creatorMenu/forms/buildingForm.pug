@@ -30,6 +30,13 @@ block content
                 .form__group 
                     +formInput('Production Speed', 'number', 'building-production-speed', 60, true)
 
+                .form__group 
+                    - const locations = data.objects[0]
+                    - locations.splice(0, 0, {name: 'None'})  
+                    +formSelect('Location', 'building-location', true, data.objects[0].map(el => { return el.name }))
+
+
+
                 .form__group.form__photo-upload
                     label.form__label(for='building-photo') Choose Photo
                     input.form__upload(type='file', accept='image/*', id='building-photo', name='building-photo')

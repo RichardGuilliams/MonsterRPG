@@ -56,9 +56,9 @@ exports.getItemForm = factory.getView('creatorMenu/forms/itemForm', 'Create A Ne
 exports.getMonsterForm = factory.getView('creatorMenu/forms/monsterForm', 'Create A New Monster', Monster);
 exports.getCollarForm = factory.getView('creatorMenu/forms/collarForm', 'Create A New Collar', Collar);
 exports.getCharmForm = factory.getView('creatorMenu/forms/CharmForm', 'Create A New Charm', Charm);
-exports.getBuildingForm = factory.getView('creatorMenu/forms/buildingForm', 'Create A New Building', Building);
+exports.getBuildingForm = factory.getView('creatorMenu/forms/buildingForm', 'Create A New Building', Location);
 exports.getAllianceForm = factory.getView('creatorMenu/forms/allianceForm', 'Create A New Alliance', Alliance);
-exports.getLocationForm = factory.getView('creatorMenu/forms/locationForm', 'Create A New Location', Location);
+exports.getLocationForm = factory.getView('creatorMenu/forms/locationForm', 'Create A New Location', Monster, Item, Weapon, Armor, Charm, Collar);
 exports.getMoveForm = factory.getView('creatorMenu/forms/moveForm', 'Create A New Move');
 exports.getAccount = factory.getView('playerMenu/account', 'Your Account');
 

@@ -1,6 +1,8 @@
 const express = require("express");
 const collarController = require("../../controllers/data/collarController");
 const authController = require("../../controllers/authController");
+const photoController = require("../../controllers/photoController");
+
 
 const router = express.Router();
 
@@ -9,7 +11,10 @@ router.use(authController.protect);
 router
   .route(`/`)
   .get(collarController.getAllCollars)
-  .post(authController.restrictTo("admin"), collarController.createCollar);
+  .post(authController.restrictTo("admin"),
+    photoController.uploadPhoto,
+    photoController.resizePhoto("collar"), 
+    collarController.createCollar);
 
 router
   .route(`/:id`)

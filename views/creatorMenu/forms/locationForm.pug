@@ -2,8 +2,47 @@ extends ../../base
 
 include ../../mixins/forms/input
 
+mixin formTable(data, length)
+    table(id="form--table")
+        button(id="increase--tables" type='button') +
+        button(id="decrease--tables" type='button') -
+        tr
+            each rowHeader in data.headers 
+                th= rowHeader
+        
+        - for (let i = 0; i < length; i++){
+            tr  
+                td
+                    +formSelect(``, `category-${i}`, false, data.categories)
+                td
+                    +formSelect(``, `${data.id}-data`, false, data.objects.map(el => { return el.name }))
+                td
+                    +formInput(``,`number`, `${data.id}-data--rarity`, 0, false)      
+        -}
+
 block content    
     include ../../inclusions/_gameVars
+
+    - const monsters = data.objects[0]
+    - monsters.splice(0, 0, {name: 'None'})
+
+    - const items = data.objects[1]
+    - items.splice(0, 0, {name: 'None'})
+
+    - const weapons = data.objects[2]
+    - weapons.splice(0, 0, {name: 'None'})
+
+    - const armors = data.objects[3]
+    - armors.splice(0, 0, {name: 'None'})
+
+    - const charms = data.objects[4]
+    - charms.splice(0, 0, {name: 'None'})
+
+    - const collars = data.objects[5]
+    - collars.splice(0, 0, {name: 'None'})
+
+
+    - let   tableData = { label: '', rh: 0, id: '', required: true, h: [], rd: null, categories: [], objects: []}
     main.main
         .location-form
             a(href='/locations') Back To locations
@@ -16,7 +55,37 @@ block content
                     +formInput('Description', 'text', 'location-desc', 'location Description', true)
 
                 .form__group
-                    +formInput('Min Level', 'number', 'location-min-level', 1, true)
+                    +formInput('Min Level', 'number', 'location-min-level', 1, true)   
+
+                .form__group 
+                    h3 Possible Items:
+                    - tableData.categories = ['Item', 'Weapon', 'Armor', 'Charm', 'Collar'];
+                    - tableData.objects = items
+                    - tableData.rows = 2
+                    - tableData.required = false 
+                    - tableData.headers = ['Type', 'Name', 'Rarity']
+                    .form__table
+                        +formTable(tableData, 10)
+
+                //- .form__group 
+                //-     h3 Armors:
+                //-     - tableData.rd = [armors]; 
+                //-     - tableData.id = 'armor'
+                //-     - tableData.rh = 2
+                //-     - tableData.required = false 
+                //-     - tableData.h = ['Name', 'Rarity']
+                //-     +formTable(tableData, 10)
+
+                //- .form__group 
+                //-     h3 Items:
+                //-     - tableData.rd = [dropTypes ,items]; 
+                //-     - tableData.id = 'items'
+                //-     - tableData.rh = 3
+                //-     - tableData.required = false 
+                //-     - tableData.h = ['Type', 'Name', 'Rarity']
+                //-     +formTable(
+                //-         tableData, 
+                //-         10)
 
                 .form__group.form__photo-upload
                     label.form__label(for='location-photo') Choose Photo

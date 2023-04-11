@@ -103,16 +103,13 @@ exports.getView = (path, title, ...data) =>
 catchAsync(async (req, res, next) => {
   let objects = [];
   if(data.length > 0) {
-    await Promise.all(
+     objects = await Promise.all(
       data.map( async Model => {
-        let model = await Model.find();
-        objects.push(model);
+        return await Model.find();
       })
     )
   }
-
-  console.log(objects)
-
+  
   res.status(200).render(`${path}`, {
     title: `${title}`,
     data: {
