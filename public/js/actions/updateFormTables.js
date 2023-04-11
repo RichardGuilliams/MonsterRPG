@@ -2,11 +2,11 @@ import { getData } from './getData'
 
 export const updateFormTables = (table, count) => {  
     if(count === 1) {
-        let id = table.firstElementChild.childElementCount; 
+        let id = table.firstElementChild.childElementCount - 1; 
         let html = `
             <tr> 
                 <td>
-                    <select class="form__input" id="category-${id}" value="category-${id}" name="category-${id}" required="false">
+                    <select class="form__input category" id="category-${id}" name="category-${id}" required="false">
                         <option value="Item">Item</option>
                         <option value="Weapon">Weapon</option>
                         <option value="Armor">Armor</option>
@@ -40,9 +40,26 @@ export const updateTableData = async (table) => {
    data.data.data.map( option => {
     return options.push(`<option>${option.name}</option>`)
    })
-
-   console.log(options);
    
-   console.log(table.children[1].firstElementChild.innerHTML = options);
+   table.children[1].firstElementChild.innerHTML = options
+}
+
+export const updateTableListeners = async(className, eventName) => {
+    const elements = document.querySelectorAll(`${className}`)
+    elements.forEach( el => {
+        el.addEventListener(`${eventName}`, async (ev) => {
+            let optionId = el.id.split('-')[1]
+            let selectElement = document.getElementById(`item-${optionId}`)
+            
+            const data = await getData(`${el.value.toLowerCase()}`);
+            let options = [`<option>None</option>`];
+            data.data.data.map( option => {
+             return options.push(`<option>${option.name}</option>`)
+            })
+            
+            selectElement.innerHTML = options
+            console.log(selectElement);           
+        })
+    })
 }
 

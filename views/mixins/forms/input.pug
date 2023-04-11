@@ -28,10 +28,10 @@ mixin addOption(name)
 //-                         +formInput(``,`number`, `${data.id}-data--rarity-${obj.name}`, 0, false)      
 //-         -}
 
-mixin formSelect(label, id, required, options)
+mixin formSelect(label, className, id, required, options)
     if (label != '')
         label.form__label(for=`${id}`) #{label}
-    select.form__input(id=`${id}`, value=`${id}` name=`${id}` type=`${type}` required=`${required}`)
+    select(id=`${id}` class=`form__input ${className}` value=`${id}` name=`${id}` type=`${type}` required=`${required}`)
         each option in options 
             +addOption(option)
 

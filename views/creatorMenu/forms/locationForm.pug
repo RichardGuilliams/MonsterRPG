@@ -13,11 +13,11 @@ mixin formTable(data, length)
         - for (let i = 0; i < length; i++){
             tr  
                 td
-                    +formSelect(``, `category-${i}`, false, data.categories)
+                    +formSelect(``,`category`, `category-${i}`, false, data.categories)
                 td
-                    +formSelect(``, `${data.id}-data`, false, data.objects.map(el => { return el.name }))
+                    +formSelect(``, `item`, `item-${i}`, false, data.objects.map(el => { return el.name }))
                 td
-                    +formInput(``,`number`, `${data.id}-data--rarity`, 0, false)      
+                    +formInput(``,`number`, `rarity-${i}`, 0, false)      
         -}
 
 block content    
