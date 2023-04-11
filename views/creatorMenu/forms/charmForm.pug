@@ -16,7 +16,7 @@ block content
                     +formInput('Description', 'text', 'charm-desc', 'charm Description', true)
 
                 .form__group
-                    +formSelect('Rank', 'text', 'charm-rank', ranks)
+                    +formSelect('Rank', '', 'text', 'charm-rank', ranks)
 
                 .form__group 
                     p Stat Bonuses:
@@ -27,8 +27,8 @@ block content
 
                 .form__group 
                     p Attributes:
-                    +formSelect('Attribute 1', 'charm-attribute1', true, attributes)
-                    +formSelect('Attribute 2', 'charm-attribute2', true, attributes)
+                    +formSelect('Attribute 1', '', 'charm-attribute1', true, attributes)
+                    +formSelect('Attribute 2', '', 'charm-attribute2', true, attributes)
 
                 .form__group.form__photo-upload
                     label.form__label(for='charm-photo') Choose Photo

@@ -13,10 +13,10 @@ block content
                     +formInput('Name', 'text', 'collar-name', 'New collar', true)
                     
                 .form__group
-                    +formSelect('Rank', 'text', 'collar-rank', ranks)
+                    +formSelect('Rank', '', 'text', 'collar-rank', ranks)
 
                 .form__group
-                    +formSelect('Monster Type', 'text', 'collar-monster-type', monsterTypes)
+                    +formSelect('Monster Type', '', 'text', 'collar-monster-type', monsterTypes)
 
                 .form__group
                     +formInput('Description', 'text', 'collar-desc', 'collar Description', true)
@@ -34,8 +34,8 @@ block content
 
                 .form__group 
                     p Attributes:
-                    +formSelect('Attribute 1', 'collar-attribute1', true, attributes)
-                    +formSelect('Attribute 2', 'collar-attribute2', true, attributes)
+                    +formSelect('Attribute 1', '', 'collar-attribute1', true, attributes)
+                    +formSelect('Attribute 2', '', 'collar-attribute2', true, attributes)
 
 
                 .form__group.form__photo-upload

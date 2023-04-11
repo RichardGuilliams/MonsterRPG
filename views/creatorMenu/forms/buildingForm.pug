@@ -16,7 +16,7 @@ block content
                     +formInput('Description', 'text', 'building-desc', 'building Description', true)
 
                 .form__group 
-                    +formSelect('Tamer Type', 'building-rank', true, tamerTypes)
+                    +formSelect('Tamer Type', 'building_rank', 'building-rank', true, tamerTypes)
                     
                 .form__group
                     +formInput('Cost', 'number', 'building-cost', 200, true)
@@ -25,7 +25,7 @@ block content
                     +formInput('Creature Slots', 'number', 'building-cost', 10, true)
 
                 .form__group 
-                    +formSelect('Type', 'building-type', true, buildingTypes)
+                    +formSelect('Type', 'building_type', 'building-type', true, buildingTypes)
                     
                 .form__group 
                     +formInput('Production Speed', 'number', 'building-production-speed', 60, true)
@@ -33,7 +33,7 @@ block content
                 .form__group 
                     - const locations = data.objects[0]
                     - locations.splice(0, 0, {name: 'None'})  
-                    +formSelect('Location', 'building-location', true, data.objects[0].map(el => { return el.name }))
+                    +formSelect('Location', '', 'building-location', true, data.objects[0].map(el => { return el.name }))
 
 
 

@@ -15,17 +15,17 @@ block content
                     +formInput('Description', 'text', 'move-desc', 'move Description', true)
                 
                 .form__group
-                    +formSelect('Rank', 'move-rank', true, ['Pawn', 'Knight', 'Champion', 'Master'])
+                    +formSelect('Rank', '', 'move-rank', true, ['Pawn', 'Knight', 'Champion', 'Master'])
 
                 .form__group
                     p Move Types:
-                    +formSelect('Type 1', 'move-type1', true, ['Beast', 'Elemental', 'Avian', 'Amphian', 'Serpent', 'Brood', 'Divine', 'Daemon', 'Necro', 'Plant'])
-                    +formSelect('Type 2', 'move-type2', true, ['None', 'Beast', 'Elemental', 'Avian', 'Amphian', 'Serpent', 'Brood', 'Divine', 'Daemon', 'Necro', 'Plant']) 
+                    +formSelect('Type 1', '', 'move-type1', true, ['Beast', 'Elemental', 'Avian', 'Amphian', 'Serpent', 'Brood', 'Divine', 'Daemon', 'Necro', 'Plant'])
+                    +formSelect('Type 2', '', 'move-type2', true, ['None', 'Beast', 'Elemental', 'Avian', 'Amphian', 'Serpent', 'Brood', 'Divine', 'Daemon', 'Necro', 'Plant']) 
 
                 .form__group
                     p Move Attributes:
-                    +formSelect('Attribute 1', 'move-attribute1', true, ['Fire', 'Water', 'Ice', 'Electric', 'Air', 'Light', 'Dark', 'Earth', 'Poison', 'Physical'])
-                    +formSelect('Attribute 2', 'move-attribute2', true, ['None', 'Fire', 'Water', 'Ice', 'Electric', 'Air', 'Light', 'Dark', 'Earth', 'Poison', 'Physical'])
+                    +formSelect('Attribute 1', '', 'move-attribute1', true, ['Fire', 'Water', 'Ice', 'Electric', 'Air', 'Light', 'Dark', 'Earth', 'Poison', 'Physical'])
+                    +formSelect('Attribute 2', '', 'move-attribute2', true, ['None', 'Fire', 'Water', 'Ice', 'Electric', 'Air', 'Light', 'Dark', 'Earth', 'Poison', 'Physical'])
 
                 .form__group
                     p Stats
@@ -34,7 +34,7 @@ block content
 
                 .form__group
                     p Move Effect:
-                    +formSelect('Effect', 'move-effect', true, [
+                    +formSelect('Effect', '', 'move-effect', true, [
                         'None', 'Poison', 'Burn', 'Frozen', 'Stunned',
                         'Paralyzed', 'Undead', 'Immortal', 'Ethereal',
                         'KO', 'Berserk', 'Confused', 'Slow', 'Haste',
@@ -44,15 +44,15 @@ block content
 
                 .form__group
                     p Move Modifier:
-                    +formSelect('Modifier', 'move-modifier', true, ['None', 'Hp', 'Mp', 'Atk', 'Def', 'MAtk', 'MDef', 'Spd', 'Agl', 'CritDmg', 'CritRate', 'Luk', 'Acc', 'Ev'])              
+                    +formSelect('Modifier', '', 'move-modifier', true, ['None', 'Hp', 'Mp', 'Atk', 'Def', 'MAtk', 'MDef', 'Spd', 'Agl', 'CritDmg', 'CritRate', 'Luk', 'Acc', 'Ev'])              
 
                 .form__group
                     p Move Target Stat:
-                    +formSelect('Stat', 'move-target-stat', true, ['None', 'Hp', 'Mp', 'Atk', 'Def', 'MAtk', 'MDef', 'Spd', 'Agl', 'CritDmg', 'CritRate', 'Luk', 'Acc', 'Ev'])                  
+                    +formSelect('Stat', '', 'move-target-stat', true, ['None', 'Hp', 'Mp', 'Atk', 'Def', 'MAtk', 'MDef', 'Spd', 'Agl', 'CritDmg', 'CritRate', 'Luk', 'Acc', 'Ev'])                  
 
                 .form__group
                     p Move Target:
-                    +formSelect('Target', 'move-target', true, ['Self', 'One', 'Ally', 'All Allies', 'Enemy', 'All Enemy', 'All'])                  
+                    +formSelect('Target', '', 'move-target', true, ['Self', 'One', 'Ally', 'All Allies', 'Enemy', 'All Enemy', 'All'])                  
 
 
                 .form__group.form__photo-upload
